@@ -18,6 +18,9 @@ class PharmacyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       home: const HomePage(),
+      routes: {
+        HomePage.routeName: (context) => const HomePage(),
+      },
     );
   }
 }
