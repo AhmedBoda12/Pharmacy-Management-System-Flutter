@@ -1,4 +1,4 @@
-import 'package:faith_pharm/views/home_page.dart';
+import 'package:faith_pharm/views/main_page.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -17,9 +17,9 @@ class PharmacyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.blueAccent),
         useMaterial3: true,
       ),
-      home: const HomePage(),
+      home: const MainPage(),
       routes: {
-        HomePage.routeName: (context) => const HomePage(),
+        MainPage.routeName: (context) => const MainPage(),
       },
     );
   }

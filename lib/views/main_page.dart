@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:stylish_bottom_bar/stylish_bottom_bar.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+class MainPage extends StatefulWidget {
+  const MainPage({super.key});
   static const String routeName = 'HomePage';
   @override
-  State<HomePage> createState() => _HomePageState();
+  State<MainPage> createState() => _MainPageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _MainPageState extends State<MainPage> {
   int selected = 0;
   bool heart = false;
   final controller = PageController();
@@ -23,9 +23,6 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       extendBody: true,
-      appBar: AppBar(
-        title: const Text('Home Page'),
-      ),
       bottomNavigationBar: StylishBottomBar(
         items: [
           BottomBarItem(
