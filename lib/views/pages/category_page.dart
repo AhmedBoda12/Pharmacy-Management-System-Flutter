@@ -14,7 +14,7 @@ class CategoryPage extends StatelessWidget {
           style: Theme.of(context).textTheme.displayLarge,
         ),
       ),
-      body: const CategoryGridView(),
+      body: const SafeArea(child: CategoryGridView()),
     );
   }
 }
