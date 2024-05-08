@@ -1,3 +1,4 @@
+import 'package:faith_pharm/views/pages/category_page.dart';
 import 'package:faith_pharm/views/pages/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:stylish_bottom_bar/stylish_bottom_bar.dart';
@@ -75,7 +76,7 @@ class _MainPageState extends State<MainPage> {
         controller: controller,
         children: const [
           HomePage(),
-          Center(child: Text('Category')),
+          CategoryPage(),
           Center(child: Text('Cart')),
           Center(child: Text('Profile')),
         ],

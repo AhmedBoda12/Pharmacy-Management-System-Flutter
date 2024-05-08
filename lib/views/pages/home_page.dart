@@ -6,7 +6,9 @@ import 'package:faith_pharm/views/widgets/product_widgets/product_grid_view.dart
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
-  const HomePage({super.key});
+  const HomePage({
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -14,21 +16,21 @@ class HomePage extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            SizedBox(
+            const SizedBox(
               height: 300,
               child: HomePageStack(),
             ),
-            SizedBox(
+            const SizedBox(
               height: 40,
             ),
             HeadlineRow(
               text: 'Exploar Categories',
             ),
-            SizedBox(
+            const SizedBox(
               height: 5,
             ),
-            CategoryRow(),
-            SizedBox(
+            const CategoryRow(),
+            const SizedBox(
               height: 10,
             ),
             HeadlineRow(
@@ -36,7 +38,7 @@ class HomePage extends StatelessWidget {
               onPrees: () =>
                   Navigator.pushNamed(context, AllProductsPage.routeName),
             ),
-            ProductGridView()
+            const ProductGridView()
           ],
         ),
       ),
