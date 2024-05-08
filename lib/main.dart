@@ -1,5 +1,6 @@
 import 'package:faith_pharm/views/home/main_page.dart';
 import 'package:faith_pharm/views/pages/all_products_page.dart';
+import 'package:faith_pharm/views/pages/product_page.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -20,8 +21,8 @@ class PharmacyApp extends StatelessWidget {
         textTheme: TextTheme(
           displayLarge: TextStyle(
               fontWeight: FontWeight.bold,
-              fontSize: 24,
-              color: Theme.of(context).colorScheme.onBackground),
+              fontSize: 26,
+              color: Theme.of(context).primaryColorDark),
           titleLarge: TextStyle(
               fontWeight: FontWeight.bold,
               fontSize: 20,
@@ -32,6 +33,7 @@ class PharmacyApp extends StatelessWidget {
       routes: {
         MainPage.routeName: (context) => const MainPage(),
         AllProductsPage.routeName: (context) => const AllProductsPage(),
+        ProductPage.routeName: (context) => const ProductPage(),
       },
     );
   }
