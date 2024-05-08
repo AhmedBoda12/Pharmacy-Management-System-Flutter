@@ -28,7 +28,7 @@ class ProductCard extends StatelessWidget {
             height: 5,
           ),
           ProductCardRow(
-            text: 'Tesla Model X',
+            text: 'Product',
             iconText: '5 min',
             icon: Icon(
               Icons.schedule_rounded,
