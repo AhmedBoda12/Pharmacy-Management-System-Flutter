@@ -1,3 +1,4 @@
+import 'package:faith_pharm/views/pages/product_page.dart';
 import 'package:faith_pharm/views/widgets/product_widgets/product_card.dart';
 import 'package:flutter/material.dart';
 
@@ -21,7 +22,9 @@ class ProductGridView extends StatelessWidget {
           shrinkWrap: true,
           itemCount: 5,
           itemBuilder: (context, index) {
-            return const ProductCard();
+            return ProductCard(
+              ontap: () => Navigator.pushNamed(context, ProductPage.routeName),
+            );
           }),
     );
   }
