@@ -14,8 +14,18 @@ class PharmacyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Faith Pharmacy',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.blueAccent),
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
         useMaterial3: true,
+        textTheme: TextTheme(
+          displayLarge: TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 24,
+              color: Theme.of(context).colorScheme.onBackground),
+          titleLarge: TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 20,
+              color: Theme.of(context).colorScheme.onPrimary),
+        ),
       ),
       home: const MainPage(),
       routes: {
