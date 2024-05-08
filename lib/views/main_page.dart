@@ -1,3 +1,4 @@
+import 'package:faith_pharm/views/pages/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:stylish_bottom_bar/stylish_bottom_bar.dart';
 
@@ -73,7 +74,7 @@ class _MainPageState extends State<MainPage> {
       body: PageView(
         controller: controller,
         children: const [
-          Center(child: Text('Home')),
+          HomePage(),
           Center(child: Text('Category')),
           Center(child: Text('Cart')),
           Center(child: Text('Profile')),
