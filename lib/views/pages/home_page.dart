@@ -1,6 +1,7 @@
 import 'package:faith_pharm/views/widgets/category_widgets/category_row.dart';
 import 'package:faith_pharm/views/widgets/headline_row.dart';
 import 'package:faith_pharm/views/widgets/home_page_widgets/home_page_stack.dart';
+import 'package:faith_pharm/views/widgets/product_widgets/product_grid_view.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
@@ -8,24 +9,29 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       body: SingleChildScrollView(
         child: Column(
           children: [
-            const SizedBox(
+            SizedBox(
               height: 300,
               child: HomePageStack(),
             ),
-            const SizedBox(
+            SizedBox(
               height: 40,
             ),
             HeadlineRow(
               text: 'Exploar Categories',
             ),
-            const SizedBox(
+            SizedBox(
+              height: 5,
+            ),
+            CategoryRow(),
+            SizedBox(
               height: 10,
             ),
-            const CategoryRow()
+            HeadlineRow(text: 'Recommended'),
+            ProductGridView()
           ],
         ),
       ),
