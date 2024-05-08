@@ -1,8 +1,6 @@
-import 'dart:ui';
-
-import 'package:faith_pharm/views/widgets/custom_search_bar.dart';
-import 'package:faith_pharm/views/widgets/home_page_cover.dart';
-import 'package:faith_pharm/views/widgets/welcome_container.dart';
+import 'package:faith_pharm/views/widgets/category_widgets/category_row.dart';
+import 'package:faith_pharm/views/widgets/headline_row.dart';
+import 'package:faith_pharm/views/widgets/home_page_widgets/home_page_stack.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
@@ -10,30 +8,24 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       body: SingleChildScrollView(
         child: Column(
           children: [
-            SizedBox(
+            const SizedBox(
               height: 300,
-              child: Stack(
-                clipBehavior: Clip.antiAlias,
-                children: [
-                  Align(
-                    alignment: Alignment.center,
-                    child: HomePageCover(),
-                  ),
-                  Align(
-                    alignment: Alignment.center,
-                    child: WelcomeContainer(),
-                  ),
-                  Align(
-                    alignment: AlignmentDirectional(1, 1.2),
-                    child: CustomSearchBar(hint: 'What are you looking for?'),
-                  ),
-                ],
-              ),
+              child: HomePageStack(),
             ),
+            const SizedBox(
+              height: 40,
+            ),
+            HeadlineRow(
+              text: 'Exploar Categories',
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            const CategoryRow()
           ],
         ),
       ),
