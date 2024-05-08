@@ -17,7 +17,7 @@ class HomePage extends StatelessWidget {
             SizedBox(
               height: 300,
               child: Stack(
-                clipBehavior: Clip.hardEdge,
+                clipBehavior: Clip.antiAlias,
                 children: [
                   Align(
                     alignment: Alignment.center,
@@ -28,7 +28,7 @@ class HomePage extends StatelessWidget {
                     child: WelcomeContainer(),
                   ),
                   Align(
-                    alignment: Alignment.bottomCenter,
+                    alignment: AlignmentDirectional(1, 1.2),
                     child: CustomSearchBar(hint: 'What are you looking for?'),
                   ),
                 ],
