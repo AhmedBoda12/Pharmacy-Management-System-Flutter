@@ -13,14 +13,16 @@ class CheckoutPage extends StatelessWidget {
           style: Theme.of(context).textTheme.displayLarge,
         ),
       ),
-      body: const Padding(
-        padding: EdgeInsets.all(16.0),
-        child: Card(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              CheckoutForm(),
-            ],
+      body: const SingleChildScrollView(
+        child: Padding(
+          padding: EdgeInsets.all(16.0),
+          child: Card(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                CheckoutForm(),
+              ],
+            ),
           ),
         ),
       ),

@@ -22,6 +22,9 @@ class _CheckoutFormState extends State<CheckoutForm> {
           padding: const EdgeInsets.symmetric(horizontal: 16.0),
           child: Column(
             children: [
+              const SizedBox(
+                height: 20,
+              ),
               Text(
                 'Shipping info',
                 style: Theme.of(context).textTheme.bodyLarge,
@@ -142,6 +145,9 @@ class _CheckoutFormState extends State<CheckoutForm> {
                   },
                   child: const Text('Place Order'),
                 ),
+              ),
+              const SizedBox(
+                height: 20,
               ),
             ],
           ),
