@@ -25,10 +25,14 @@ class PharmacyApp extends StatelessWidget {
               fontWeight: FontWeight.bold,
               fontSize: 26,
               color: Theme.of(context).primaryColorDark),
+          bodyLarge: TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 22,
+              color: Theme.of(context).colorScheme.onBackground),
           titleLarge: TextStyle(
               fontWeight: FontWeight.bold,
-              fontSize: 20,
-              color: Theme.of(context).colorScheme.onPrimary),
+              fontSize: 22,
+              color: Theme.of(context).colorScheme.background),
         ),
       ),
       home: const MainPage(),

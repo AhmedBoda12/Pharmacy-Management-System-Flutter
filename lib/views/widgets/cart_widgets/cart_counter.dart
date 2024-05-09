@@ -23,11 +23,11 @@ class _CartCounterState extends State<CartCounter> {
               }
             });
           },
-          icon: Icon(Icons.remove),
+          icon: const Icon(Icons.remove),
         ),
         Text(
           '$index',
-          style: Theme.of(context).textTheme.bodyLarge,
+          style: Theme.of(context).textTheme.titleMedium,
         ),
         IconButton(
           onPressed: () {
@@ -35,7 +35,7 @@ class _CartCounterState extends State<CartCounter> {
               index++;
             });
           },
-          icon: Icon(Icons.add),
+          icon: const Icon(Icons.add),
         ),
       ],
     );

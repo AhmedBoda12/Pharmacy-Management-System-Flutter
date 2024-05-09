@@ -1,3 +1,4 @@
+import 'package:faith_pharm/views/pages/checkout_page.dart';
 import 'package:faith_pharm/views/widgets/cart_widgets/cart_list_view.dart';
 import 'package:flutter/material.dart';
 
@@ -56,7 +57,8 @@ class CartPage extends StatelessWidget {
                   style: FilledButton.styleFrom(
                     elevation: 4,
                   ),
-                  onPressed: () {},
+                  onPressed: () =>
+                      Navigator.pushNamed(context, CheckoutPage.routeName),
                   child: const Text('Checkout'),
                 ),
               ),
