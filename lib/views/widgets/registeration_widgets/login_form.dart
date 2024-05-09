@@ -9,8 +9,9 @@ class LoginForm extends StatefulWidget {
 
 class _LoginFormState extends State<LoginForm> {
   final _formKey = GlobalKey<FormState>();
-  String? email;
+  String? username;
   String? password;
+  bool isScure = true;
   @override
   Widget build(BuildContext context) {
     return Form(
@@ -26,7 +27,7 @@ class _LoginFormState extends State<LoginForm> {
               }
             },
             onSaved: (newValue) {
-              email = newValue;
+              username = newValue;
             },
             decoration: InputDecoration(
               labelText: 'Enter your Username',
@@ -44,6 +45,7 @@ class _LoginFormState extends State<LoginForm> {
             height: 20,
           ),
           TextFormField(
+            obscureText: isScure,
             validator: (value) {
               if (value!.isEmpty) {
                 return 'Please enter your password';
@@ -55,6 +57,16 @@ class _LoginFormState extends State<LoginForm> {
               password = newValue;
             },
             decoration: InputDecoration(
+              suffixIcon: IconButton(
+                onPressed: () {
+                  setState(() {
+                    isScure = !isScure;
+                  });
+                },
+                icon: isScure
+                    ? const Icon(Icons.visibility_off)
+                    : const Icon(Icons.visibility),
+              ),
               labelText: 'Enter your Password',
               isDense: true,
               filled: true,
