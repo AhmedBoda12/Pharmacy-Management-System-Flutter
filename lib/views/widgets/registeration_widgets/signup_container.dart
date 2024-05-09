@@ -55,12 +55,12 @@ class SignupContainer extends StatelessWidget {
                       'Already have an account?',
                     ),
                     TextButton(
-                        style: TextButton.styleFrom(
-                          padding: const EdgeInsets.symmetric(horizontal: 8),
-                        ),
-                        onPressed: () =>
-                            Navigator.pushNamed(context, LoginPage.routeName),
-                        child: const Text('Login'))
+                      style: TextButton.styleFrom(
+                        padding: const EdgeInsets.symmetric(horizontal: 8),
+                      ),
+                      onPressed: () => Navigator.pop(context),
+                      child: const Text('Login'),
+                    )
                   ],
                 )
               ],
