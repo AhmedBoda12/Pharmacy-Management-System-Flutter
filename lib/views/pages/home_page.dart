@@ -39,7 +39,9 @@ class HomePage extends StatelessWidget {
                 onPrees: () =>
                     Navigator.pushNamed(context, AllProductsPage.routeName),
               ),
-              const ProductGridView()
+              const ProductGridView(
+                categoryId: '',
+              )
             ],
           ),
         ),

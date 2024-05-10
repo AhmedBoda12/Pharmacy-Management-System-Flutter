@@ -1,1 +1,1 @@
-const String baseUrl = 'http://192.168.1.3:3000/api';
+const String baseUrl = 'https://e-commerce-project-syhj.onrender.com/api';
