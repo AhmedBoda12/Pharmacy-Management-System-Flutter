@@ -1,13 +1,15 @@
 import 'package:faith_pharm/constants.dart';
 import 'package:faith_pharm/helper/api.dart';
 import 'package:faith_pharm/models/product_model.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class ProductServices {
   Future<List<ProductModel>> getAllProducts() async {
+    String? token = await getToken();
+
     var data = await Api().get(
       url: '$baseUrl/product/',
-      token:
-          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2M2Q1ODQ2MzU3ZmQwNDMxYzM1Njk5ZiIsImlzQWRtaW4iOmZhbHNlLCJpYXQiOjE3MTUyOTY1NzUsImV4cCI6MTcxNTU1NTc3NX0.llQyxJHUpqX1BNb3NTJQ96tBgZKiQLT4fySavV2Bas4',
+      token: token,
     );
     List<ProductModel> productList = [];
     for (int i = 0; i < data.length; i++) {
@@ -17,11 +19,18 @@ class ProductServices {
   }
 
   Future<ProductModel> getProductById(String id) async {
+    String? token = await getToken();
+
     var data = await Api().get(
       url: '$baseUrl/product/find/$id',
-      token:
-          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2M2Q1ODQ2MzU3ZmQwNDMxYzM1Njk5ZiIsImlzQWRtaW4iOmZhbHNlLCJpYXQiOjE3MTUyOTY1NzUsImV4cCI6MTcxNTU1NTc3NX0.llQyxJHUpqX1BNb3NTJQ96tBgZKiQLT4fySavV2Bas4',
+      token: token,
     );
     return ProductModel.fromJson(data);
+  }
+
+  // Function to retrieve token from SharedPreferences
+  Future<String?> getToken() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    return prefs.getString('token');
   }
 }

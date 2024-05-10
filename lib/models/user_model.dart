@@ -1,41 +1,49 @@
+import 'dart:convert';
+
 class UserModel {
   final String? id;
-  String? userName;
-  final String? firstName;
-  final String? lastName;
+  final String username;
+  final String? firstname;
+  final String? lastname;
   final String? email;
-  String? password;
   final bool? isAdmin;
-  final String? token;
+  final DateTime? createdAt;
+  final DateTime? updatedAt;
+  final String? accessToken;
+  final String? password;
 
   UserModel({
-    required this.userName,
     this.id,
-    this.firstName,
-    this.lastName,
+    required this.username,
+    this.firstname,
+    this.lastname,
     this.email,
+    this.password,
     this.isAdmin,
-    required this.password,
-    this.token,
+    this.createdAt,
+    this.updatedAt,
+    this.accessToken,
   });
 
-  factory UserModel.fromJson(json) {
-    return UserModel(
-      userName: json['username'],
-      firstName: json['firstname'],
-      lastName: json['lastname'],
-      email: json['email'],
-      password: json['password'],
-      id: json['_id'],
-      isAdmin: json['isAdmin'],
-      token: json['accessToken'],
-    );
-  }
+  factory UserModel.fromMap(json) => UserModel(
+        id: json["_id"],
+        username: json["username"],
+        firstname: json["firstname"],
+        lastname: json["lastname"],
+        email: json["email"],
+        isAdmin: json["isAdmin"],
+        createdAt: DateTime.parse(json["createdAt"]),
+        updatedAt: DateTime.parse(json["updatedAt"]),
+        accessToken: json["accessToken"],
+      );
+
+  factory UserModel.fromJson(String str) => UserModel.fromMap(json.decode(str));
+
   Map<String, dynamic> regisetToJson() {
     return {
-      'username': userName,
-      'firstname': firstName,
-      'lastname': lastName,
+      'username': username,
+      'firstname': firstname,
+      'lastname': lastname,
       'email': email,
       'password': password,
     };
@@ -43,8 +51,8 @@ class UserModel {
 
   Map<String, dynamic> loginToJson() {
     return {
-      'username': userName,
-      'password': password,
+      "username": username,
+      "password": password,
     };
   }
 }

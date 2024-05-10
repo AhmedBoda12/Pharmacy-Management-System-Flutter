@@ -6,10 +6,9 @@ class SignupServices {
   Future<dynamic> signUp(UserModel user) async {
     Map<String, dynamic> data = await Api().post(
       url: '$baseUrl/auth/register',
-      body: user,
-      token: null,
+      body: user.regisetToJson(),
     );
 
-    return UserModel.fromJson(data);
+    return UserModel.fromMap(data);
   }
 }

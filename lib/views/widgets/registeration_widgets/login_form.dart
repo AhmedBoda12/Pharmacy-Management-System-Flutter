@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:faith_pharm/models/user_model.dart';
 import 'package:faith_pharm/services/login_services.dart';
 import 'package:faith_pharm/views/home/main_page.dart';
@@ -11,10 +13,9 @@ class LoginForm extends StatefulWidget {
 }
 
 class _LoginFormState extends State<LoginForm> {
-  final LoginServices _loginServices = LoginServices();
   final _formKey = GlobalKey<FormState>();
-  String? user;
-  String? pass;
+  final _usernameController = TextEditingController();
+  final _passwordController = TextEditingController();
   bool isScure = true;
   @override
   Widget build(BuildContext context) {
@@ -23,15 +24,13 @@ class _LoginFormState extends State<LoginForm> {
       child: Column(
         children: [
           TextFormField(
+            controller: _usernameController,
             validator: (value) {
               if (value!.isEmpty) {
                 return 'Please enter your Username';
               } else {
                 return null;
               }
-            },
-            onSaved: (newValue) {
-              user = newValue!;
             },
             decoration: InputDecoration(
               labelText: 'Enter your Username',
@@ -49,6 +48,7 @@ class _LoginFormState extends State<LoginForm> {
             height: 20,
           ),
           TextFormField(
+            controller: _passwordController,
             obscureText: isScure,
             validator: (value) {
               if (value!.isEmpty) {
@@ -56,9 +56,6 @@ class _LoginFormState extends State<LoginForm> {
               } else {
                 return null;
               }
-            },
-            onSaved: (newValue) {
-              pass = newValue!;
             },
             decoration: InputDecoration(
               suffixIcon: IconButton(
@@ -92,18 +89,12 @@ class _LoginFormState extends State<LoginForm> {
                 if (_formKey.currentState!.validate()) {
                   _formKey.currentState!.save();
                   try {
-                    UserModel userModel =
-                        UserModel(userName: user, password: pass);
-                    _login(
-                      userModel,
-                    );
+                    _login();
                     Navigator.pushReplacementNamed(
                       context,
                       MainPage.routeName,
-                      arguments: userModel,
                     );
                   } catch (e) {
-                    // ignore: use_build_context_synchronously
                     showDialog(
                       context: context,
                       builder: (context) => AlertDialog(
@@ -130,7 +121,14 @@ class _LoginFormState extends State<LoginForm> {
     );
   }
 
-  Future<void> _login(UserModel userModel) async {
-    await _loginServices.login(userModel);
+  Future<void> _login() async {
+    LoginServices login = LoginServices();
+    UserModel user = UserModel(
+        username: _usernameController.text, password: _passwordController.text);
+    try {
+      await login.login(user);
+    } catch (e) {
+      log(e.toString());
+    }
   }
 }

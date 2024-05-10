@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:faith_pharm/models/user_model.dart';
 import 'package:faith_pharm/services/signup_services.dart';
 import 'package:flutter/material.dart';
@@ -12,11 +14,11 @@ class SignupForm extends StatefulWidget {
 class _SignupFormState extends State<SignupForm> {
   final SignupServices _signupServices = SignupServices();
   final _formKey = GlobalKey<FormState>();
-  late String username;
-  late String firstName;
-  late String lastName;
-  late String email;
-  late String password;
+  final _usernameController = TextEditingController();
+  final _passwordController = TextEditingController();
+  final _firstnameController = TextEditingController();
+  final _lastnameController = TextEditingController();
+  final _emailController = TextEditingController();
   bool isScure = true;
   @override
   Widget build(BuildContext context) {
@@ -26,15 +28,13 @@ class _SignupFormState extends State<SignupForm> {
         child: Column(
           children: [
             TextFormField(
+              controller: _usernameController,
               validator: (value) {
                 if (value!.isEmpty) {
                   return 'Please enter your Username';
                 } else {
                   return null;
                 }
-              },
-              onSaved: (newValue) {
-                username = newValue!;
               },
               decoration: InputDecoration(
                 labelText: 'User name',
@@ -52,15 +52,13 @@ class _SignupFormState extends State<SignupForm> {
               height: 20,
             ),
             TextFormField(
+              controller: _firstnameController,
               validator: (value) {
                 if (value!.isEmpty) {
                   return 'Please enter your first name';
                 } else {
                   return null;
                 }
-              },
-              onSaved: (newValue) {
-                firstName = newValue!;
               },
               keyboardType: TextInputType.name,
               decoration: InputDecoration(
@@ -79,15 +77,13 @@ class _SignupFormState extends State<SignupForm> {
               height: 20,
             ),
             TextFormField(
+              controller: _lastnameController,
               validator: (value) {
                 if (value!.isEmpty) {
                   return 'Please enter your last name';
                 } else {
                   return null;
                 }
-              },
-              onSaved: (newValue) {
-                lastName = newValue!;
               },
               keyboardType: TextInputType.name,
               decoration: InputDecoration(
@@ -106,15 +102,13 @@ class _SignupFormState extends State<SignupForm> {
               height: 20,
             ),
             TextFormField(
+              controller: _emailController,
               validator: (value) {
                 if (value!.isEmpty) {
                   return 'Please enter your email';
                 } else {
                   return null;
                 }
-              },
-              onSaved: (newValue) {
-                email = newValue!;
               },
               decoration: InputDecoration(
                 labelText: 'Email',
@@ -132,6 +126,7 @@ class _SignupFormState extends State<SignupForm> {
               height: 20,
             ),
             TextFormField(
+              controller: _passwordController,
               obscureText: isScure,
               validator: (value) {
                 if (value!.isEmpty) {
@@ -139,9 +134,6 @@ class _SignupFormState extends State<SignupForm> {
                 } else {
                   return null;
                 }
-              },
-              onSaved: (newValue) {
-                password = newValue!;
               },
               decoration: InputDecoration(
                 suffixIcon: IconButton(
@@ -175,9 +167,7 @@ class _SignupFormState extends State<SignupForm> {
                   if (_formKey.currentState!.validate()) {
                     _formKey.currentState!.save();
                     try {
-                      _signup(
-                        UserModel(userName: username, password: password),
-                      );
+                      _signup();
                       Navigator.pop(context);
                     } catch (e) {
                       showDialog(
@@ -207,7 +197,18 @@ class _SignupFormState extends State<SignupForm> {
     );
   }
 
-  void _signup(UserModel user) async {
-    await _signupServices.signUp(user);
+  void _signup() async {
+    UserModel user = UserModel(
+      username: _usernameController.text,
+      firstname: _firstnameController.text,
+      lastname: _lastnameController.text,
+      email: _emailController.text,
+      password: _passwordController.text,
+    );
+    try {
+      await _signupServices.signUp(user);
+    } catch (e) {
+      log(e.toString());
+    }
   }
 }

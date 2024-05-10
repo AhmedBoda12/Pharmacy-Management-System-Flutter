@@ -23,9 +23,7 @@ class Api {
   }
 
   Future<dynamic> post(
-      {required String url,
-      @required dynamic body,
-      @required String? token}) async {
+      {required String url, @required dynamic body, String? token}) async {
     Map<String, String> headers = {};
     if (token != null) {
       headers.addAll({'token': 'Bearer $token'});
@@ -36,12 +34,13 @@ class Api {
         data: body,
         options: Options(headers: headers),
       );
-      if (response.statusCode == 200 | 201) {
-        return {'success': true, 'data': response.data};
-      } else {
-        return {'success': false, 'message': 'Registration failed'};
+      if (response.statusCode == 200 || response.statusCode == 201) {
+        return response.data;
       }
-    } catch (error) {
+      // else {
+      //   return {'success': false, 'message': 'Registration failed'};
+      // }
+    } on DioException catch (error) {
       return {'success': false, 'message': 'Error: $error'};
     }
   }
