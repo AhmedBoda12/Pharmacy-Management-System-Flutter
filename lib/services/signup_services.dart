@@ -7,7 +7,7 @@ class SignupServices {
     Map<String, dynamic> data = await Api().post(
       url: '$baseUrl/auth/register',
       body: user,
-      token: user.token,
+      token: null,
     );
 
     return UserModel.fromJson(data);

@@ -88,12 +88,20 @@ class _LoginFormState extends State<LoginForm> {
           SizedBox(
             width: double.infinity,
             child: FilledButton(
-              onPressed: () async {
+              onPressed: () {
                 if (_formKey.currentState!.validate()) {
                   _formKey.currentState!.save();
                   try {
-                    await _login(UserModel(userName: user, password: pass));
-                    Navigator.pushReplacementNamed(context, MainPage.routeName);
+                    UserModel userModel =
+                        UserModel(userName: user, password: pass);
+                    _login(
+                      userModel,
+                    );
+                    Navigator.pushReplacementNamed(
+                      context,
+                      MainPage.routeName,
+                      arguments: userModel,
+                    );
                   } catch (e) {
                     // ignore: use_build_context_synchronously
                     showDialog(

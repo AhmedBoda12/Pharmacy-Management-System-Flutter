@@ -14,7 +14,7 @@ class Api {
         url,
         options: Options(headers: headers),
       );
-      if (response.statusCode == 200 | 201) {
+      if (response.statusCode == 200 || response.statusCode == 201) {
         return response.data;
       }
     } catch (error) {
