@@ -1,10 +1,11 @@
 import 'package:faith_pharm/views/home/main_page.dart';
 import 'package:faith_pharm/views/pages/all_products_page.dart';
+import 'package:faith_pharm/views/pages/dashboard_page.dart';
 import 'package:faith_pharm/views/pages/product_page.dart';
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const PharmacyApp());
+  runApp(MaterialApp(home: dashBoard(),));
 }
 
 class PharmacyApp extends StatelessWidget {
