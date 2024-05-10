@@ -1,3 +1,7 @@
+import 'dart:developer';
+import 'package:faith_pharm/models/user_model.dart';
+import 'package:faith_pharm/services/login.dart';
+import 'package:faith_pharm/views/home/main_page.dart';
 import 'package:flutter/material.dart';
 
 class LoginForm extends StatefulWidget {
@@ -8,9 +12,10 @@ class LoginForm extends StatefulWidget {
 }
 
 class _LoginFormState extends State<LoginForm> {
+  final Login _loginServices = Login();
   final _formKey = GlobalKey<FormState>();
-  String? username;
-  String? password;
+  String? user;
+  String? pass;
   bool isScure = true;
   @override
   Widget build(BuildContext context) {
@@ -27,7 +32,7 @@ class _LoginFormState extends State<LoginForm> {
               }
             },
             onSaved: (newValue) {
-              username = newValue;
+              user = newValue!;
             },
             decoration: InputDecoration(
               labelText: 'Enter your Username',
@@ -54,7 +59,7 @@ class _LoginFormState extends State<LoginForm> {
               }
             },
             onSaved: (newValue) {
-              password = newValue;
+              pass = newValue!;
             },
             decoration: InputDecoration(
               suffixIcon: IconButton(
@@ -84,9 +89,30 @@ class _LoginFormState extends State<LoginForm> {
           SizedBox(
             width: double.infinity,
             child: FilledButton(
-              onPressed: () {
+              onPressed: () async {
                 if (_formKey.currentState!.validate()) {
                   _formKey.currentState!.save();
+                  try {
+                    await _login(UserModel(userName: user, password: pass));
+                    Navigator.pushReplacementNamed(context, MainPage.routeName);
+                  } catch (e) {
+                    // ignore: use_build_context_synchronously
+                    showDialog(
+                      context: context,
+                      builder: (context) => AlertDialog(
+                        title: const Text('Error'),
+                        content: Text(e.toString()),
+                        actions: [
+                          TextButton(
+                            onPressed: () {
+                              Navigator.pop(context);
+                            },
+                            child: const Text('OK'),
+                          ),
+                        ],
+                      ),
+                    );
+                  }
                 }
               },
               child: const Text('Login'),
@@ -95,5 +121,9 @@ class _LoginFormState extends State<LoginForm> {
         ],
       ),
     );
+  }
+
+  Future<void> _login(UserModel userModel) async {
+    await _loginServices.login(userModel);
   }
 }
