@@ -17,6 +17,7 @@ class _CounterContainerState extends State<CounterContainer> {
       decoration: BoxDecoration(
           border: Border.all(), borderRadius: BorderRadius.circular(12)),
       child: Row(
+        mainAxisSize: MainAxisSize.min,
         children: [
           IconButton(
             onPressed: () {
