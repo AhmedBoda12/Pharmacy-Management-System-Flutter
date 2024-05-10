@@ -15,4 +15,13 @@ class ProductServices {
     }
     return productList;
   }
+
+  Future<ProductModel> getProductById(String id) async {
+    var data = await Api().get(
+      url: '$baseUrl/product/find/$id',
+      token:
+          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2M2Q1ODQ2MzU3ZmQwNDMxYzM1Njk5ZiIsImlzQWRtaW4iOmZhbHNlLCJpYXQiOjE3MTUyOTY1NzUsImV4cCI6MTcxNTU1NTc3NX0.llQyxJHUpqX1BNb3NTJQ96tBgZKiQLT4fySavV2Bas4',
+    );
+    return ProductModel.fromJson(data);
+  }
 }

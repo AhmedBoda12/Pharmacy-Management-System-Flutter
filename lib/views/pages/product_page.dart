@@ -1,3 +1,5 @@
+import 'package:faith_pharm/models/product_model.dart';
+import 'package:faith_pharm/services/products_serviecs.dart';
 import 'package:faith_pharm/views/widgets/counter_container.dart';
 import 'package:faith_pharm/views/widgets/product_widgets/product_nav.dart';
 import 'package:flutter/material.dart';
@@ -5,8 +7,11 @@ import 'package:flutter/material.dart';
 class ProductPage extends StatelessWidget {
   const ProductPage({super.key});
   static const String routeName = 'ProductPage';
+
   @override
   Widget build(BuildContext context) {
+    ProductModel productModel =
+        ModalRoute.of(context)!.settings.arguments as ProductModel;
     return Scaffold(
       extendBody: true,
       appBar: AppBar(
@@ -30,62 +35,70 @@ class ProductPage extends StatelessWidget {
           )
         ],
       ),
-      body: SafeArea(
-        child: SingleChildScrollView(
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              ClipRRect(
-                child: Image.network(
-                  'https://images.unsplash.com/photo-1566958769312-82cef41d19ef?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NzF8fHByb2R1Y3RzfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=900&q=60',
-                  width: double.infinity,
-                  height: 300,
-                  fit: BoxFit.cover,
+      body: FutureBuilder(
+          future: ProductServices().getProductById(productModel.id),
+          builder: (context, snapshot) {
+            if (snapshot.hasData) {
+              return SafeArea(
+                child: SingleChildScrollView(
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      ClipRRect(
+                        child: Image.network(
+                          'https://images.unsplash.com/photo-1566958769312-82cef41d19ef?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NzF8fHByb2R1Y3RzfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=900&q=60',
+                          width: double.infinity,
+                          height: 300,
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                        child: Text(
+                          productModel.title,
+                          textAlign: TextAlign.start,
+                          style: Theme.of(context).textTheme.displayLarge,
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                        child: Text(
+                          productModel.desc,
+                          textAlign: TextAlign.start,
+                          style: Theme.of(context).textTheme.bodyLarge,
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              '${productModel.price} EGP',
+                              style: Theme.of(context).textTheme.headlineLarge,
+                            ),
+                            const CounterContainer()
+                          ],
+                        ),
+                      )
+                    ],
+                  ),
                 ),
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                child: Text(
-                  'Product name',
-                  textAlign: TextAlign.start,
-                  style: Theme.of(context).textTheme.displayLarge,
-                ),
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                child: Text(
-                  'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do.',
-                  textAlign: TextAlign.start,
-                  style: Theme.of(context).textTheme.bodyLarge,
-                ),
-              ),
-              const SizedBox(
-                height: 20,
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      '50.00 EGP',
-                      style: Theme.of(context).textTheme.headlineLarge,
-                    ),
-                    const CounterContainer()
-                  ],
-                ),
-              )
-            ],
-          ),
-        ),
-      ),
+              );
+            } else {
+              return const Center(child: CircularProgressIndicator());
+            }
+          }),
       bottomNavigationBar: const ProductBottomNav(),
     );
   }

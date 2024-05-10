@@ -31,8 +31,11 @@ class ProductGridView extends StatelessWidget {
                 itemBuilder: (context, index) {
                   return ProductCard(
                     productModel: products[index],
-                    ontap: () =>
-                        Navigator.pushNamed(context, ProductPage.routeName),
+                    ontap: () => Navigator.pushNamed(
+                      context,
+                      ProductPage.routeName,
+                      arguments: products[index],
+                    ),
                   );
                 });
           } else {
