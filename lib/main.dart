@@ -1,6 +1,8 @@
 import 'package:faith_pharm/views/home/main_page.dart';
 import 'package:faith_pharm/views/pages/all_products_page.dart';
 import 'package:faith_pharm/views/pages/cart_page.dart';
+import 'package:faith_pharm/views/pages/category_page.dart';
+import 'package:faith_pharm/views/pages/category_products_page.dart';
 import 'package:faith_pharm/views/pages/checkout_page.dart';
 import 'package:faith_pharm/views/pages/login_page.dart';
 import 'package:faith_pharm/views/pages/product_page.dart';
@@ -42,6 +44,7 @@ class PharmacyApp extends StatelessWidget {
         ProductPage.routeName: (context) => const ProductPage(),
         CartPage.routeName: (context) => const CartPage(),
         CheckoutPage.routeName: (context) => const CheckoutPage(),
+        CategoryProducts.routeName: (context) => const CategoryProducts()
       },
     );
   }

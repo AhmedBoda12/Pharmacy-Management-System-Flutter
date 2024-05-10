@@ -43,7 +43,7 @@ class CategoryCard extends StatelessWidget {
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Text(
-                  categotyModel.categoryname,
+                  categotyModel.categoryname.substring(0, 2),
                   style: Theme.of(context).textTheme.titleLarge,
                 ),
               ),

@@ -33,7 +33,10 @@ class ProductCard extends StatelessWidget {
                     topLeft: Radius.circular(20),
                     topRight: Radius.circular(20),
                   ),
-                  child: Placeholder()
+                  child: Image.network(
+                    productModel.image,
+                    fit: BoxFit.cover,
+                  )
                   //  ClipRRect(
                   //   child: Image.network(productModel.image),
                   // ),

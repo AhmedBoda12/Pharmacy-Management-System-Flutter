@@ -47,7 +47,7 @@ class ProductPage extends StatelessWidget {
                     children: [
                       ClipRRect(
                         child: Image.network(
-                          'https://images.unsplash.com/photo-1566958769312-82cef41d19ef?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NzF8fHByb2R1Y3RzfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=900&q=60',
+                          productModel.image,
                           width: double.infinity,
                           height: 300,
                           fit: BoxFit.cover,

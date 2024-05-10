@@ -28,6 +28,19 @@ class ProductServices {
     return ProductModel.fromJson(data);
   }
 
+  Future<List<ProductModel>> getProductsByCategory(String id) async {
+    String? token = await getToken();
+    var data = await Api().get(
+      url: '$baseUrl/product/find/$id',
+      token: token,
+    );
+    List<ProductModel> productList = [];
+    for (int i = 0; i < data.length; i++) {
+      productList.add(ProductModel.fromJson(data[i]));
+    }
+    return productList;
+  }
+
   // Function to retrieve token from SharedPreferences
   Future<String?> getToken() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
