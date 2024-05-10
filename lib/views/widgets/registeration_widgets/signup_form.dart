@@ -1,3 +1,5 @@
+import 'package:faith_pharm/models/user_model.dart';
+import 'package:faith_pharm/services/signup_services.dart';
 import 'package:flutter/material.dart';
 
 class SignupForm extends StatefulWidget {
@@ -8,12 +10,13 @@ class SignupForm extends StatefulWidget {
 }
 
 class _SignupFormState extends State<SignupForm> {
+  final SignupServices _signupServices = SignupServices();
   final _formKey = GlobalKey<FormState>();
-  String? username;
-  String? firstName;
-  String? lastName;
-  String? email;
-  String? password;
+  late String username;
+  late String firstName;
+  late String lastName;
+  late String email;
+  late String password;
   bool isScure = true;
   @override
   Widget build(BuildContext context) {
@@ -31,7 +34,7 @@ class _SignupFormState extends State<SignupForm> {
                 }
               },
               onSaved: (newValue) {
-                username = newValue;
+                username = newValue!;
               },
               decoration: InputDecoration(
                 labelText: 'User name',
@@ -57,7 +60,7 @@ class _SignupFormState extends State<SignupForm> {
                 }
               },
               onSaved: (newValue) {
-                firstName = newValue;
+                firstName = newValue!;
               },
               keyboardType: TextInputType.name,
               decoration: InputDecoration(
@@ -84,7 +87,7 @@ class _SignupFormState extends State<SignupForm> {
                 }
               },
               onSaved: (newValue) {
-                lastName = newValue;
+                lastName = newValue!;
               },
               keyboardType: TextInputType.name,
               decoration: InputDecoration(
@@ -111,7 +114,7 @@ class _SignupFormState extends State<SignupForm> {
                 }
               },
               onSaved: (newValue) {
-                email = newValue;
+                email = newValue!;
               },
               decoration: InputDecoration(
                 labelText: 'Email',
@@ -138,7 +141,7 @@ class _SignupFormState extends State<SignupForm> {
                 }
               },
               onSaved: (newValue) {
-                password = newValue;
+                password = newValue!;
               },
               decoration: InputDecoration(
                 suffixIcon: IconButton(
@@ -171,6 +174,28 @@ class _SignupFormState extends State<SignupForm> {
                 onPressed: () {
                   if (_formKey.currentState!.validate()) {
                     _formKey.currentState!.save();
+                    try {
+                      _signup(
+                        UserModel(userName: username, password: password),
+                      );
+                      Navigator.pop(context);
+                    } catch (e) {
+                      showDialog(
+                        context: context,
+                        builder: (context) => AlertDialog(
+                          title: const Text('Error'),
+                          content: const Text('error'),
+                          actions: [
+                            TextButton(
+                              onPressed: () {
+                                Navigator.pop(context);
+                              },
+                              child: const Text('OK'),
+                            ),
+                          ],
+                        ),
+                      );
+                    }
                   }
                 },
                 child: const Text('Create account'),
@@ -180,5 +205,9 @@ class _SignupFormState extends State<SignupForm> {
         ),
       ),
     );
+  }
+
+  void _signup(UserModel user) async {
+    await _signupServices.signUp(user);
   }
 }

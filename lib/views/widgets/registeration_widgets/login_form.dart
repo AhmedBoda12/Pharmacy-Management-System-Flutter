@@ -1,6 +1,5 @@
-import 'dart:developer';
 import 'package:faith_pharm/models/user_model.dart';
-import 'package:faith_pharm/services/login.dart';
+import 'package:faith_pharm/services/login_services.dart';
 import 'package:faith_pharm/views/home/main_page.dart';
 import 'package:flutter/material.dart';
 
@@ -12,7 +11,7 @@ class LoginForm extends StatefulWidget {
 }
 
 class _LoginFormState extends State<LoginForm> {
-  final Login _loginServices = Login();
+  final LoginServices _loginServices = LoginServices();
   final _formKey = GlobalKey<FormState>();
   String? user;
   String? pass;

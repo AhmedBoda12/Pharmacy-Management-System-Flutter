@@ -1,4 +1,3 @@
-import 'package:faith_pharm/views/pages/login_page.dart';
 import 'package:faith_pharm/views/widgets/registeration_widgets/signup_form.dart';
 import 'package:flutter/material.dart';
 
@@ -60,7 +59,7 @@ class SignupContainer extends StatelessWidget {
                       ),
                       onPressed: () => Navigator.pop(context),
                       child: const Text('Login'),
-                    )
+                    ),
                   ],
                 )
               ],
