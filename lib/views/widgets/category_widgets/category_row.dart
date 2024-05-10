@@ -1,3 +1,5 @@
+import 'package:faith_pharm/models/category_model.dart';
+import 'package:faith_pharm/services/category_services.dart';
 import 'package:faith_pharm/views/widgets/category_widgets/category_card.dart';
 import 'package:flutter/material.dart';
 
@@ -8,18 +10,29 @@ class CategoryRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const SingleChildScrollView(
+    return SingleChildScrollView(
       scrollDirection: Axis.horizontal,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: [
-          CategoryCard(
-            categoryName: 'Skin Care',
-            image: 'assets/skin.png',
-            color: Color(0xff41C9E2),
-          ),
-        ],
-      ),
+      child: FutureBuilder(
+          future: CategoryServices().getAllCategories(),
+          builder: (context, snapshot) {
+            if (snapshot.hasData) {
+              List<CategotyModel> categories = snapshot.data!;
+              return Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  ...categories.map((e) {
+                    return CategoryCard(
+                      categotyModel: e,
+                      image: 'assets/skin.png',
+                      color: const Color(0xFF41C9E2),
+                    );
+                  })
+                ],
+              );
+            } else {
+              return const Center(child: CircularProgressIndicator());
+            }
+          }),
     );
   }
 }

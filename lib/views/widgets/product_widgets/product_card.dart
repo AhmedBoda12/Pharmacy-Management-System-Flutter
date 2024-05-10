@@ -27,15 +27,17 @@ class ProductCard extends StatelessWidget {
         elevation: 4,
         child: Column(
           children: [
-            const Expanded(
+            Expanded(
               child: ClipRRect(
-                  borderRadius: BorderRadius.only(
+                  borderRadius: const BorderRadius.only(
                     topLeft: Radius.circular(20),
                     topRight: Radius.circular(20),
                   ),
-                  child: ClipRRect(
-                    child: Placeholder(),
-                  )),
+                  child: Placeholder()
+                  //  ClipRRect(
+                  //   child: Image.network(productModel.image),
+                  // ),
+                  ),
             ),
             const SizedBox(
               height: 5,
