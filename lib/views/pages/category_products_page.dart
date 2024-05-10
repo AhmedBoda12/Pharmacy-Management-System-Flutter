@@ -1,7 +1,6 @@
 import 'package:faith_pharm/models/category_model.dart';
 import 'package:faith_pharm/views/widgets/custom_search_bar.dart';
 import 'package:faith_pharm/views/widgets/product_widgets/product_grid_view.dart';
-import 'package:faith_pharm/views/widgets/product_widgets/products_chips.dart';
 import 'package:flutter/material.dart';
 
 class CategoryProducts extends StatelessWidget {

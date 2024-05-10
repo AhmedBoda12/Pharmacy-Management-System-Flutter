@@ -1,6 +1,5 @@
 import 'package:faith_pharm/models/category_model.dart';
 import 'package:faith_pharm/services/category_services.dart';
-import 'package:faith_pharm/views/pages/all_products_page.dart';
 import 'package:faith_pharm/views/pages/category_products_page.dart';
 import 'package:faith_pharm/views/widgets/category_widgets/category_card.dart';
 import 'package:flutter/material.dart';

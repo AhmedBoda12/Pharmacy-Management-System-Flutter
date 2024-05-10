@@ -1,4 +1,3 @@
-import 'package:faith_pharm/models/category_model.dart';
 import 'package:faith_pharm/models/product_model.dart';
 import 'package:faith_pharm/services/products_serviecs.dart';
 import 'package:faith_pharm/views/pages/product_page.dart';
