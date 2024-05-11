@@ -1,27 +1,18 @@
-// ignore_for_file: camel_case_types, non_constant_identifier_names
-
+import 'package:faith_pharm/models/product_model.dart';
 import 'package:flutter/material.dart';
 
-class product_card extends StatelessWidget {
-  const product_card(
-      {required this.product_category,
-      this.product_concentration = 500,
-      required this.product_name,
-      required this.product_price,
-      required this.product_stock,
-      super.key});
-  final String product_name;
-  final double product_price;
-  final int product_concentration;
-  final String product_category;
-  final int product_stock;
+class AdminProductCard extends StatelessWidget {
+  const AdminProductCard(
+      {super.key, required this.productModel, required this.onDelete});
+
+  final ProductModel productModel;
+  final VoidCallback onDelete;
 
   @override
   Widget build(BuildContext context) {
     return Padding(
         padding: const EdgeInsets.only(top: 5, left: 10, right: 10),
         child: Container(
-          width: double.infinity,
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),
               color: Colors.white,
@@ -40,35 +31,23 @@ class product_card extends StatelessWidget {
                       Padding(
                         padding: const EdgeInsets.only(right: 15),
                         child: Container(
-                            height: 70,
-                            width: 70,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(45),
-                            ),
-                            child: Image.asset(
-                                "assets/images_dashboard/manage_product.png")),
+                          height: 70,
+                          width: 70,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(45),
+                          ),
+                          child: Image.network(productModel.image),
+                        ),
                       ),
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            product_name,
+                            productModel.title.substring(0, 10),
                             style: const TextStyle(fontSize: 20),
                           ),
                           Text(
-                            "Stock : $product_stock",
-                            style: const TextStyle(fontSize: 15),
-                          ),
-                          Text(
-                            "Product Price : $product_price L.E",
-                            style: const TextStyle(fontSize: 15),
-                          ),
-                          Text(
-                            "Product Category : $product_category ",
-                            style: const TextStyle(fontSize: 15),
-                          ),
-                          Text(
-                            "Product Concentration : $product_concentration ",
+                            "Product Price : ${productModel.price} L.E",
                             style: const TextStyle(fontSize: 15),
                           ),
                         ],
@@ -78,19 +57,17 @@ class product_card extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                            backgroundColor: Colors.indigo),
+                      FilledButton(
+                        style: FilledButton.styleFrom(),
                         onPressed: () {},
                         child: const Text(
-                          " Edite ",
+                          " Edit",
                           style: TextStyle(color: Colors.white),
                         ),
                       ),
-                      ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                            backgroundColor: Colors.indigo),
-                        onPressed: () {},
+                      FilledButton(
+                        style: FilledButton.styleFrom(),
+                        onPressed: onDelete,
                         child: const Text(
                           "Delete",
                           style: TextStyle(color: Colors.white),
