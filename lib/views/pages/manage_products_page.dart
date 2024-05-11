@@ -79,7 +79,7 @@ class _ManageProductsPageState extends State<ManageProductsPage> {
 
   Future<void> _deleteProduct(int index) async {
     try {
-      await ProductServices().deleteProduct(productId: _products[index].id);
+      await ProductServices().deleteProduct(productId: _products[index].id!);
       setState(() {
         _products.removeAt(index);
       });

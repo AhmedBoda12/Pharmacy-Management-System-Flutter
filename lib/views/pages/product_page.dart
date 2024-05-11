@@ -36,7 +36,7 @@ class ProductPage extends StatelessWidget {
         ],
       ),
       body: FutureBuilder(
-          future: ProductServices().getProductById(productModel.id),
+          future: ProductServices().getProductById(productModel.id!),
           builder: (context, snapshot) {
             if (snapshot.hasData) {
               return SafeArea(

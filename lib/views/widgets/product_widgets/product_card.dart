@@ -51,7 +51,7 @@ class ProductCard extends StatelessWidget {
             ),
             ProductCardRow(
               text: '${productModel.price} EGP',
-              iconText: format.format(productModel.createdAt),
+              iconText: format.format(productModel.createdAt!),
               icon: Icon(
                 Icons.schedule_rounded,
                 size: 15,
