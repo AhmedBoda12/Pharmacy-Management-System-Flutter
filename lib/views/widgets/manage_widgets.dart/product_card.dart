@@ -1,5 +1,9 @@
 // ignore_for_file: camel_case_types, non_constant_identifier_names
 
+import 'package:faith_pharm/views/widgets/add_item_widgets/categories_drop_down.dart';
+import 'package:faith_pharm/views/widgets/add_item_widgets/image_button.dart';
+import 'package:faith_pharm/views/widgets/add_item_widgets/text_field.dart';
+import 'package:faith_pharm/views/widgets/add_item_widgets/title_lable.dart';
 import 'package:flutter/material.dart';
 
 class product_card extends StatelessWidget {
@@ -19,7 +23,7 @@ class product_card extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-        padding: const EdgeInsets.only(top: 5, left: 10, right: 10),
+        padding: EdgeInsets.only(top: 5, left: 10, right: 10),
         child: Container(
           width: double.infinity,
           decoration: BoxDecoration(
@@ -29,7 +33,7 @@ class product_card extends StatelessWidget {
                 BoxShadow(color: Colors.black26, spreadRadius: 1, blurRadius: 6)
               ]),
           child: Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: EdgeInsets.all(8.0),
             child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
@@ -81,7 +85,50 @@ class product_card extends StatelessWidget {
                       ElevatedButton(
                         style: ElevatedButton.styleFrom(
                             backgroundColor: Colors.indigo),
-                        onPressed: () {},
+                        onPressed: () {
+                          showModalBottomSheet(
+                              context: context,
+                              builder: (BuildContext context) {
+                                return Padding(
+                                  padding: EdgeInsets.only(
+                                      top: 15, left: 15, right: 15, bottom: 15),
+                                  child: SingleChildScrollView(
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        TextTitle(title_text: "Title"),
+                                        Text_field(),
+                                        TextTitle(title_text: "Size"),
+                                        Text_field(),
+                                        TextTitle(title_text: "Price"),
+                                        Text_field(),
+                                        TextTitle(title_text: "Description"),
+                                        Text_field(),
+                                        Padding(
+                                          padding: EdgeInsets.only(top: 15),
+                                          child: Categories(),
+                                        ),
+                                        AddImageButton(),
+                                        Center(
+                                          child: ElevatedButton(
+                                            style: ElevatedButton.styleFrom(
+                                                backgroundColor: Colors.indigo),
+                                            onPressed: () {},
+                                            child: const Text(
+                                              "Summit Edit",
+                                              style: TextStyle(
+                                                  color: Colors.white,
+                                                  fontSize: 20),
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                );
+                              });
+                        },
                         child: const Text(
                           " Edite ",
                           style: TextStyle(color: Colors.white),
