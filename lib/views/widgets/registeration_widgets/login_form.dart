@@ -1,8 +1,7 @@
-import 'dart:developer';
-
 import 'package:faith_pharm/models/user_model.dart';
 import 'package:faith_pharm/services/login_services.dart';
 import 'package:faith_pharm/views/home/main_page.dart';
+import 'package:faith_pharm/views/pages/dashboard_page.dart';
 import 'package:flutter/material.dart';
 
 class LoginForm extends StatefulWidget {
@@ -88,29 +87,7 @@ class _LoginFormState extends State<LoginForm> {
               onPressed: () {
                 if (_formKey.currentState!.validate()) {
                   _formKey.currentState!.save();
-                  try {
-                    _login();
-                    Navigator.pushReplacementNamed(
-                      context,
-                      MainPage.routeName,
-                    );
-                  } catch (e) {
-                    showDialog(
-                      context: context,
-                      builder: (context) => AlertDialog(
-                        title: const Text('Error'),
-                        content: Text(e.toString()),
-                        actions: [
-                          TextButton(
-                            onPressed: () {
-                              Navigator.pop(context);
-                            },
-                            child: const Text('OK'),
-                          ),
-                        ],
-                      ),
-                    );
-                  }
+                  _login(context);
                 }
               },
               child: const Text('Login'),
@@ -121,14 +98,35 @@ class _LoginFormState extends State<LoginForm> {
     );
   }
 
-  Future<void> _login() async {
-    LoginServices login = LoginServices();
+  Future<dynamic> _login(BuildContext context) async {
+    final login = LoginServices();
     UserModel user = UserModel(
         username: _usernameController.text, password: _passwordController.text);
     try {
-      await login.login(user);
+      UserModel loggedUser = await login.login(user);
+      if (context.mounted) {
+        loggedUser.isAdmin!
+            ? Navigator.pushReplacementNamed(context, DashBoardPage.routeName)
+            : Navigator.pushReplacementNamed(context, MainPage.routeName);
+      }
     } catch (e) {
-      log(e.toString());
+      if (context.mounted) {
+        showDialog(
+          context: context,
+          builder: (context) => AlertDialog(
+            title: const Text('Error'),
+            content: const Text('invalid login'),
+            actions: [
+              TextButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                child: const Text('OK'),
+              ),
+            ],
+          ),
+        );
+      }
     }
   }
 }

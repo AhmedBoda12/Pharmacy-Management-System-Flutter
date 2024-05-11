@@ -12,13 +12,7 @@ class ManageProductsPage extends StatelessWidget {
         extendBody: true,
         appBar: AppBar(
           backgroundColor: Theme.of(context).colorScheme.primary,
-          actions: const [
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 12),
-              child: SizedBox(
-                  child: CustomSearchBar(hint: "Which product do you search?")),
-            ),
-          ],
+          title: const CustomSearchBar(hint: "Which product do you search?"),
         ),
         floatingActionButton: const FloatAction(),
         body: const SingleChildScrollView(

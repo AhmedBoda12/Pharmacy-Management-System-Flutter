@@ -9,6 +9,7 @@ import 'package:intl/intl.dart';
 
 class DashBoardPage extends StatelessWidget {
   DashBoardPage({super.key});
+  static const String routeName = 'DashboardPage';
   final List imageData = [
     "assets/images_dashboard/manage_categories.jpg",
     "assets/images_dashboard/manage_orders.jpg",
