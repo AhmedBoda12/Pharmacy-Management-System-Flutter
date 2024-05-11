@@ -25,41 +25,41 @@ class ManageCategoriesPage extends StatelessWidget {
       body: const SingleChildScrollView(
         child: Column(
           children: [
-            category_card(
-              category_name: "inti boitic",
-              category_item_num: 10,
+            CategoryCard(
+              categoryName: "inti boitic",
+              categoryItemNum: 10,
             ),
-            category_card(
-              category_name: "inti boitic",
-              category_item_num: 10,
+            CategoryCard(
+              categoryName: "inti boitic",
+              categoryItemNum: 10,
             ),
-            category_card(
-              category_name: "inti boitic",
-              category_item_num: 10,
+            CategoryCard(
+              categoryName: "inti boitic",
+              categoryItemNum: 10,
             ),
-            category_card(
-              category_name: "inti boitic",
-              category_item_num: 10,
+            CategoryCard(
+              categoryName: "inti boitic",
+              categoryItemNum: 10,
             ),
-            category_card(
-              category_name: "inti boitic",
-              category_item_num: 10,
+            CategoryCard(
+              categoryName: "inti boitic",
+              categoryItemNum: 10,
             ),
-            category_card(
-              category_name: "inti boitic",
-              category_item_num: 10,
+            CategoryCard(
+              categoryName: "inti boitic",
+              categoryItemNum: 10,
             ),
-            category_card(
-              category_name: "inti boitic",
-              category_item_num: 10,
+            CategoryCard(
+              categoryName: "inti boitic",
+              categoryItemNum: 10,
             ),
-            category_card(
-              category_name: "inti boitic",
-              category_item_num: 10,
+            CategoryCard(
+              categoryName: "inti boitic",
+              categoryItemNum: 10,
             ),
-            category_card(
-              category_name: "inti boitic",
-              category_item_num: 10,
+            CategoryCard(
+              categoryName: "inti boitic",
+              categoryItemNum: 10,
             ),
           ],
         ),

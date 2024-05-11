@@ -1,5 +1,3 @@
-import 'package:faith_pharm/models/product_model.dart';
-import 'package:faith_pharm/services/products_serviecs.dart';
 import 'package:faith_pharm/views/widgets/add_item_widgets/categories_drop_down.dart';
 import 'package:faith_pharm/views/widgets/add_item_widgets/image_button.dart';
 import 'package:faith_pharm/views/widgets/add_item_widgets/title_lable.dart';
@@ -30,7 +28,7 @@ class _AddProductFormState extends State<AddProductForm> {
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisSize: MainAxisSize.min,
           children: [
-            const TextTitle(title_text: "Title"),
+            const TextTitle(titleText: "Title"),
             TextFormField(
               controller: _titleController,
               validator: (value) {
@@ -49,7 +47,7 @@ class _AddProductFormState extends State<AddProductForm> {
                 ),
               ),
             ),
-            const TextTitle(title_text: "Size"),
+            const TextTitle(titleText: "Size"),
             TextFormField(
               controller: _sizeController,
               validator: (value) {
@@ -68,7 +66,7 @@ class _AddProductFormState extends State<AddProductForm> {
                 ),
               ),
             ),
-            const TextTitle(title_text: "Price"),
+            const TextTitle(titleText: "Price"),
             TextFormField(
               controller: _priceController,
               validator: (value) {
@@ -87,7 +85,7 @@ class _AddProductFormState extends State<AddProductForm> {
                 ),
               ),
             ),
-            const TextTitle(title_text: "Description"),
+            const TextTitle(titleText: "Description"),
             TextFormField(
               controller: _descriptionController,
               validator: (value) {

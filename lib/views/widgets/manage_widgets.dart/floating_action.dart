@@ -22,13 +22,13 @@ class FloatAction extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const TextTitle(title_text: "Title"),
+                      const TextTitle(titleText: "Title"),
                       const TextField(),
-                      const TextTitle(title_text: "Size"),
+                      const TextTitle(titleText: "Size"),
                       const TextField(),
-                      const TextTitle(title_text: "Price"),
+                      const TextTitle(titleText: "Price"),
                       const TextField(),
-                      const TextTitle(title_text: "Description"),
+                      const TextTitle(titleText: "Description"),
                       const TextField(),
                       const Padding(
                         padding: EdgeInsets.only(top: 15),

@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 
-class user_card extends StatelessWidget {
-  const user_card({
-    required this.user_authorization,
-    required this.user_name,
-    super.key});
-  final bool user_authorization;
-  final String user_name;
+class UserCard extends StatelessWidget {
+  const UserCard(
+      {required this.userAuthorization, required this.userName, super.key});
+  final bool userAuthorization;
+  final String userName;
 
   @override
   Widget build(BuildContext context) {
@@ -43,8 +41,14 @@ class user_card extends StatelessWidget {
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text("$user_name", style: TextStyle(fontSize: 20),),
-                          Text("Authorized : $user_authorization", style: TextStyle(fontSize: 20),),
+                          Text(
+                            userName,
+                            style: const TextStyle(fontSize: 20),
+                          ),
+                          Text(
+                            "Authorized : $userAuthorization",
+                            style: const TextStyle(fontSize: 20),
+                          ),
                         ],
                       ),
                     ],
@@ -56,8 +60,8 @@ class user_card extends StatelessWidget {
                         style: ElevatedButton.styleFrom(
                             backgroundColor: Colors.indigo),
                         onPressed: () {},
-                        child: Text(
-                          " Edite ",
+                        child: const Text(
+                          "Edit",
                           style: TextStyle(color: Colors.white),
                         ),
                       ),
@@ -65,7 +69,7 @@ class user_card extends StatelessWidget {
                         style: ElevatedButton.styleFrom(
                             backgroundColor: Colors.indigo),
                         onPressed: () {},
-                        child: Text(
+                        child: const Text(
                           "Delete",
                           style: TextStyle(color: Colors.white),
                         ),

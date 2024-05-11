@@ -25,46 +25,46 @@ class ManageOrdersPage extends StatelessWidget {
       body: const SingleChildScrollView(
         child: Column(
           children: [
-            order_card(
-                order_id: 1,
-                order_date: "7 Aug 2024",
-                order_item_num: 5,
-                order_price: 55.5),
-            order_card(
-                order_id: 2,
-                order_date: "7 Aug 2024",
-                order_item_num: 5,
-                order_price: 55.5),
-            order_card(
-                order_id: 3,
-                order_date: "7 Aug 2024",
-                order_item_num: 5,
-                order_price: 55.5),
-            order_card(
-                order_id: 4,
-                order_date: "7 Aug 2024",
-                order_item_num: 5,
-                order_price: 55.5),
-            order_card(
-                order_id: 5,
-                order_date: "7 Aug 2024",
-                order_item_num: 5,
-                order_price: 55.5),
-            order_card(
-                order_id: 6,
-                order_date: "7 Aug 2024",
-                order_item_num: 5,
-                order_price: 55.5),
-            order_card(
-                order_id: 7,
-                order_date: "7 Aug 2024",
-                order_item_num: 5,
-                order_price: 55.5),
-            order_card(
-                order_id: 8,
-                order_date: "7 Aug 2024",
-                order_item_num: 5,
-                order_price: 55.5),
+            OrderCard(
+                orderId: 1,
+                orderDate: "7 Aug 2024",
+                orderItemNum: 5,
+                orderPrice: 55.5),
+            OrderCard(
+                orderId: 2,
+                orderDate: "7 Aug 2024",
+                orderItemNum: 5,
+                orderPrice: 55.5),
+            OrderCard(
+                orderId: 3,
+                orderDate: "7 Aug 2024",
+                orderItemNum: 5,
+                orderPrice: 55.5),
+            OrderCard(
+                orderId: 4,
+                orderDate: "7 Aug 2024",
+                orderItemNum: 5,
+                orderPrice: 55.5),
+            OrderCard(
+                orderId: 5,
+                orderDate: "7 Aug 2024",
+                orderItemNum: 5,
+                orderPrice: 55.5),
+            OrderCard(
+                orderId: 6,
+                orderDate: "7 Aug 2024",
+                orderItemNum: 5,
+                orderPrice: 55.5),
+            OrderCard(
+                orderId: 7,
+                orderDate: "7 Aug 2024",
+                orderItemNum: 5,
+                orderPrice: 55.5),
+            OrderCard(
+                orderId: 8,
+                orderDate: "7 Aug 2024",
+                orderItemNum: 5,
+                orderPrice: 55.5),
           ],
         ),
       ),

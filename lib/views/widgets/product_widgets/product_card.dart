@@ -6,10 +6,10 @@ import 'package:intl/intl.dart';
 
 class ProductCard extends StatelessWidget {
   ProductCard({
-    Key? key,
+    super.key,
     this.ontap,
     required this.productModel,
-  }) : super(key: key);
+  });
   final ProductModel productModel;
   final void Function()? ontap;
   final format = DateFormat.yMd();

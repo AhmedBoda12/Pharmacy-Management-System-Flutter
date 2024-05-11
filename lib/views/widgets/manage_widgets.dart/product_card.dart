@@ -84,14 +84,14 @@ class AdminProductCard extends StatelessWidget {
                                           CrossAxisAlignment.start,
                                       mainAxisSize: MainAxisSize.min,
                                       children: [
-                                        const TextTitle(title_text: "Title"),
+                                        const TextTitle(titleText: "Title"),
                                         const BottomSheetTextField(),
-                                        const TextTitle(title_text: "Size"),
+                                        const TextTitle(titleText: "Size"),
                                         const BottomSheetTextField(),
-                                        const TextTitle(title_text: "Price"),
+                                        const TextTitle(titleText: "Price"),
                                         const BottomSheetTextField(),
                                         const TextTitle(
-                                            title_text: "Description"),
+                                            titleText: "Description"),
                                         const BottomSheetTextField(),
                                         const Padding(
                                           padding: EdgeInsets.only(top: 15),
