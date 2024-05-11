@@ -1,6 +1,5 @@
 import 'package:faith_pharm/views/home/main_page.dart';
 import 'package:faith_pharm/views/pages/all_products_page.dart';
-import 'package:faith_pharm/views/pages/dashboard_page.dart';
 import 'package:faith_pharm/views/pages/product_page.dart';
 import 'package:flutter/material.dart';
 
@@ -30,7 +29,7 @@ class PharmacyApp extends StatelessWidget {
               color: Theme.of(context).colorScheme.onPrimary),
         ),
       ),
-      home: DashBoardPage(),
+      home: const MainPage(),
       routes: {
         MainPage.routeName: (context) => const MainPage(),
         AllProductsPage.routeName: (context) => const AllProductsPage(),
