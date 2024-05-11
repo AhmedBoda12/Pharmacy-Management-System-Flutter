@@ -1,9 +1,7 @@
-// ignore_for_file: camel_case_types
-
 import 'package:flutter/material.dart';
 
-class top_text_dashboard extends StatelessWidget {
-  const top_text_dashboard({
+class TopTextDashboard extends StatelessWidget {
+  const TopTextDashboard({
     super.key,
     required this.lastUpdate,
   });
@@ -11,18 +9,24 @@ class top_text_dashboard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          "Faith Pharmacy",
-          style: TextStyle(color: Colors.white, fontSize: 40),
-        ),
-        Text(
-          "Last Update: $lastUpdate",
-          style: TextStyle(color: Colors.grey, fontSize: 15),
-        ),
-      ],
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 16.0),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const Text(
+            "Faith Pharmacy",
+            style: TextStyle(color: Colors.white, fontSize: 40),
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 8.0),
+            child: Text(
+              "Last Update: $lastUpdate",
+              style: const TextStyle(color: Colors.white, fontSize: 15),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

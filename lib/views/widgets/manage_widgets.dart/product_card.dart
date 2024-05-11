@@ -3,13 +3,13 @@
 import 'package:flutter/material.dart';
 
 class product_card extends StatelessWidget {
-  const product_card({
-    required this.product_category,
-    this.product_concentration = 500 ,
-    required this.product_name,
-    required this.product_price,
-    required this.product_stock,
-    super.key});
+  const product_card(
+      {required this.product_category,
+      this.product_concentration = 500,
+      required this.product_name,
+      required this.product_price,
+      required this.product_stock,
+      super.key});
   final String product_name;
   final double product_price;
   final int product_concentration;
@@ -46,16 +46,31 @@ class product_card extends StatelessWidget {
                               borderRadius: BorderRadius.circular(45),
                             ),
                             child: Image.asset(
-                                "assets/images_dashboard/manage_product.avif")),
+                                "assets/images_dashboard/manage_product.png")),
                       ),
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(product_name, style: TextStyle(fontSize: 20),),
-                          Text("Stock : $product_stock", style: TextStyle(fontSize: 15),),
-                          Text("Product Price : $product_price L.E", style: TextStyle(fontSize: 15),),
-                          Text("Product Category : $product_category ", style: TextStyle(fontSize: 15),),
-                          Text("Product Concentration : $product_concentration ", style: TextStyle(fontSize: 15),),
+                          Text(
+                            product_name,
+                            style: const TextStyle(fontSize: 20),
+                          ),
+                          Text(
+                            "Stock : $product_stock",
+                            style: const TextStyle(fontSize: 15),
+                          ),
+                          Text(
+                            "Product Price : $product_price L.E",
+                            style: const TextStyle(fontSize: 15),
+                          ),
+                          Text(
+                            "Product Category : $product_category ",
+                            style: const TextStyle(fontSize: 15),
+                          ),
+                          Text(
+                            "Product Concentration : $product_concentration ",
+                            style: const TextStyle(fontSize: 15),
+                          ),
                         ],
                       ),
                     ],
@@ -67,7 +82,7 @@ class product_card extends StatelessWidget {
                         style: ElevatedButton.styleFrom(
                             backgroundColor: Colors.indigo),
                         onPressed: () {},
-                        child: Text(
+                        child: const Text(
                           " Edite ",
                           style: TextStyle(color: Colors.white),
                         ),
@@ -76,7 +91,7 @@ class product_card extends StatelessWidget {
                         style: ElevatedButton.styleFrom(
                             backgroundColor: Colors.indigo),
                         onPressed: () {},
-                        child: Text(
+                        child: const Text(
                           "Delete",
                           style: TextStyle(color: Colors.white),
                         ),

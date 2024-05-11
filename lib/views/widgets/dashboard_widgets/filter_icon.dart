@@ -1,17 +1,15 @@
-// ignore_for_file: camel_case_types
-
 import 'package:flutter/material.dart';
 
-class filter_icon extends StatefulWidget {
-  const filter_icon({
+class FilterIcon extends StatefulWidget {
+  const FilterIcon({
     super.key,
   });
 
   @override
-  State<filter_icon> createState() => _filter_iconState();
+  State<FilterIcon> createState() => _FilterIconState();
 }
 
-class _filter_iconState extends State<filter_icon> {
+class _FilterIconState extends State<FilterIcon> {
   @override
   Widget build(BuildContext context) {
     return InkWell(

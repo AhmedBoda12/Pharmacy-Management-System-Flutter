@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class float_action extends StatelessWidget {
-  const float_action({
+class FloatAction extends StatelessWidget {
+  const FloatAction({
     super.key,
   });
 
@@ -10,7 +10,7 @@ class float_action extends StatelessWidget {
     return FloatingActionButton(
       onPressed: () {},
       backgroundColor: Colors.indigo,
-      child: Icon(
+      child: const Icon(
         Icons.add,
         color: Colors.white,
       ),
