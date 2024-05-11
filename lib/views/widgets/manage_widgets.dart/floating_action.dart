@@ -54,6 +54,7 @@ class FloatAction extends StatelessWidget {
             });
       },
       backgroundColor: Colors.indigo,
+
       child: const Icon(
         Icons.add,
         color: Colors.white,

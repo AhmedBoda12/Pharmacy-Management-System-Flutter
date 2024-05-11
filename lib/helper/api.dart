@@ -37,9 +37,26 @@ class Api {
       if (response.statusCode == 200 || response.statusCode == 201) {
         return response.data;
       }
-      // else {
-      //   return {'success': false, 'message': 'Registration failed'};
-      // }
+    } on DioException catch (error) {
+      return {'success': false, 'message': 'Error: $error'};
+    }
+  }
+
+  Future<dynamic> delete({required String url, @required String? token}) async {
+    Map<String, String> headers = {};
+    if (token != null) {
+      headers.addAll({'token': 'Bearer $token'});
+    }
+    try {
+      Response response =
+          await _dio.delete(url, options: Options(headers: headers));
+
+      if (response.statusCode == 200) {
+        return true;
+      } else {
+        // Handle error
+        throw Exception('Failed to delete product: ${response.statusCode}');
+      }
     } on DioException catch (error) {
       return {'success': false, 'message': 'Error: $error'};
     }
