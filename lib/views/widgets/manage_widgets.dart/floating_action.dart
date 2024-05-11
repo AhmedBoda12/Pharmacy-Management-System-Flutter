@@ -9,7 +9,7 @@ class FloatAction extends StatelessWidget {
   Widget build(BuildContext context) {
     return FloatingActionButton(
       onPressed: () {},
-      backgroundColor: Colors.indigo,
+      backgroundColor: Theme.of(context).colorScheme.primary,
       child: const Icon(
         Icons.add,
         color: Colors.white,

@@ -41,6 +41,17 @@ class ProductServices {
     return productList;
   }
 
+  Future<dynamic> deleteProduct({required String productId}) async {
+    String? token = await getToken();
+
+    var data = await Api().delete(
+      url: '$baseUrl/product/delete/$productId',
+      token: token,
+    );
+
+    return data;
+  }
+
   // Function to retrieve token from SharedPreferences
   Future<String?> getToken() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
