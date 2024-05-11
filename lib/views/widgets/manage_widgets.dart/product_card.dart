@@ -18,7 +18,7 @@ class AdminProductCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-        padding: EdgeInsets.only(top: 5, left: 10, right: 10),
+        padding: const EdgeInsets.only(top: 5, left: 10, right: 10),
         child: Container(
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),
@@ -27,7 +27,7 @@ class AdminProductCard extends StatelessWidget {
                 BoxShadow(color: Colors.black26, spreadRadius: 1, blurRadius: 6)
               ]),
           child: Padding(
-            padding: EdgeInsets.all(8.0),
+            padding: const EdgeInsets.all(8.0),
             child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
@@ -64,44 +64,45 @@ class AdminProductCard extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                            backgroundColor: Colors.indigo),
+                      FilledButton(
                         onPressed: () {
                           showModalBottomSheet(
+                              isScrollControlled: true,
                               context: context,
                               builder: (BuildContext context) {
                                 return Padding(
                                   padding: EdgeInsets.only(
-                                      top: 15, left: 15, right: 15, bottom: 15),
+                                      left: 20,
+                                      right: 20,
+                                      top: 15,
+                                      bottom: MediaQuery.of(context)
+                                          .viewInsets
+                                          .bottom),
                                   child: SingleChildScrollView(
                                     child: Column(
                                       crossAxisAlignment:
                                           CrossAxisAlignment.start,
+                                      mainAxisSize: MainAxisSize.min,
                                       children: [
-                                        TextTitle(title_text: "Title"),
-                                        Text_field(),
-                                        TextTitle(title_text: "Size"),
-                                        Text_field(),
-                                        TextTitle(title_text: "Price"),
-                                        Text_field(),
-                                        TextTitle(title_text: "Description"),
-                                        Text_field(),
-                                        Padding(
+                                        const TextTitle(title_text: "Title"),
+                                        const BottomSheetTextField(),
+                                        const TextTitle(title_text: "Size"),
+                                        const BottomSheetTextField(),
+                                        const TextTitle(title_text: "Price"),
+                                        const BottomSheetTextField(),
+                                        const TextTitle(
+                                            title_text: "Description"),
+                                        const BottomSheetTextField(),
+                                        const Padding(
                                           padding: EdgeInsets.only(top: 15),
                                           child: Categories(),
                                         ),
-                                        AddImageButton(),
+                                        const AddImageButton(),
                                         Center(
-                                          child: ElevatedButton(
-                                            style: ElevatedButton.styleFrom(
-                                                backgroundColor: Colors.indigo),
+                                          child: FilledButton(
                                             onPressed: () {},
                                             child: const Text(
-                                              "Summit Edit",
-                                              style: TextStyle(
-                                                  color: Colors.white,
-                                                  fontSize: 20),
+                                              "Submit",
                                             ),
                                           ),
                                         ),
@@ -111,7 +112,6 @@ class AdminProductCard extends StatelessWidget {
                                 );
                               });
                         },
-
                         child: const Text(
                           " Edit",
                           style: TextStyle(color: Colors.white),
