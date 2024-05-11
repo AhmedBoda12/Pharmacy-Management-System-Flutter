@@ -13,7 +13,6 @@ class MainPage extends StatefulWidget {
 
 class _MainPageState extends State<MainPage> {
   int selected = 0;
-  bool heart = false;
   final controller = PageController();
 
   @override
