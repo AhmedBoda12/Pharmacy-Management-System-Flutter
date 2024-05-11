@@ -1,6 +1,11 @@
 import 'package:faith_pharm/views/home/main_page.dart';
 import 'package:faith_pharm/views/pages/all_products_page.dart';
+import 'package:faith_pharm/views/pages/cart_page.dart';
+import 'package:faith_pharm/views/pages/category_products_page.dart';
+import 'package:faith_pharm/views/pages/checkout_page.dart';
+import 'package:faith_pharm/views/pages/login_page.dart';
 import 'package:faith_pharm/views/pages/product_page.dart';
+import 'package:faith_pharm/views/pages/signup_page.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -25,15 +30,20 @@ class PharmacyApp extends StatelessWidget {
               color: Theme.of(context).primaryColorDark),
           titleLarge: TextStyle(
               fontWeight: FontWeight.bold,
-              fontSize: 20,
-              color: Theme.of(context).colorScheme.onPrimary),
+              fontSize: 22,
+              color: Theme.of(context).colorScheme.background),
         ),
       ),
-      home: const MainPage(),
+      home: const LoginPage(),
       routes: {
+        LoginPage.routeName: (context) => const LoginPage(),
+        SignupPage.routeName: (context) => const SignupPage(),
         MainPage.routeName: (context) => const MainPage(),
         AllProductsPage.routeName: (context) => const AllProductsPage(),
         ProductPage.routeName: (context) => const ProductPage(),
+        CartPage.routeName: (context) => const CartPage(),
+        CheckoutPage.routeName: (context) => const CheckoutPage(),
+        CategoryProducts.routeName: (context) => const CategoryProducts()
       },
     );
   }

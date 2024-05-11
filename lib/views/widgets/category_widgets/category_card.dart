@@ -1,14 +1,15 @@
+import 'package:faith_pharm/models/category_model.dart';
 import 'package:flutter/material.dart';
 
 class CategoryCard extends StatelessWidget {
   const CategoryCard({
     super.key,
-    required this.categoryName,
     required this.image,
     required this.color,
     this.onTap,
+    required this.categotyModel,
   });
-  final String categoryName;
+  final CategotyModel categotyModel;
   final String image;
   final Color color;
   final void Function()? onTap;
@@ -42,7 +43,7 @@ class CategoryCard extends StatelessWidget {
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Text(
-                  categoryName,
+                  categotyModel.categoryname.substring(0, 2),
                   style: Theme.of(context).textTheme.titleLarge,
                 ),
               ),
