@@ -4,7 +4,9 @@ import 'package:faith_pharm/views/widgets/product_widgets/products_chips.dart';
 import 'package:flutter/material.dart';
 
 class AllProductsPage extends StatelessWidget {
-  const AllProductsPage({super.key});
+  const AllProductsPage({
+    super.key,
+  });
   static const String routeName = 'AllProductsPage';
   @override
   Widget build(BuildContext context) {
@@ -22,7 +24,9 @@ class AllProductsPage extends StatelessWidget {
       body: ListView(
         children: const [
           AllProductsChips(),
-          ProductGridView(),
+          ProductGridView(
+            categoryId: '',
+          ),
         ],
       ),
     );

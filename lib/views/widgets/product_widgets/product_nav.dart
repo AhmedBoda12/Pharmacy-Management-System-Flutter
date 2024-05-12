@@ -1,3 +1,4 @@
+import 'package:faith_pharm/views/pages/checkout_page.dart';
 import 'package:faith_pharm/views/widgets/custom_elevated_icon.dart';
 import 'package:flutter/material.dart';
 
@@ -26,7 +27,8 @@ class ProductBottomNav extends StatelessWidget {
             CustomElevatedButtonIcon(
               text: 'Checkout',
               icon: const Icon(Icons.shopping_cart_checkout),
-              onPress: () {},
+              onPress: () =>
+                  Navigator.pushNamed(context, CheckoutPage.routeName),
             ),
             CustomElevatedButtonIcon(
               text: 'Add to cart',

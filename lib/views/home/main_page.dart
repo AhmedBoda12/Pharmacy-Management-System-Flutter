@@ -1,3 +1,4 @@
+import 'package:faith_pharm/views/pages/cart_page.dart';
 import 'package:faith_pharm/views/pages/category_page.dart';
 import 'package:faith_pharm/views/pages/home_page.dart';
 import 'package:flutter/material.dart';
@@ -13,7 +14,6 @@ class MainPage extends StatefulWidget {
 
 class _MainPageState extends State<MainPage> {
   int selected = 0;
-  bool heart = false;
   final controller = PageController();
 
   @override
@@ -78,8 +78,11 @@ class _MainPageState extends State<MainPage> {
         children: const [
           HomePage(),
           CategoryPage(),
-          Center(child: Text('Cart')),
+          CartPage(),
+
           ProfileScreen(),
+
+ 
         ],
       ),
     );

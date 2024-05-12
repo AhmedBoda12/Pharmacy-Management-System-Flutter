@@ -1,11 +1,19 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 
+import 'package:faith_pharm/models/product_model.dart';
+import 'package:intl/intl.dart';
+
 class ProductCard extends StatelessWidget {
-  const ProductCard({
+  ProductCard({
     super.key,
     this.ontap,
+    required this.productModel,
   });
+  final ProductModel productModel;
   final void Function()? ontap;
+  final format = DateFormat.yMd();
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -19,32 +27,33 @@ class ProductCard extends StatelessWidget {
         elevation: 4,
         child: Column(
           children: [
-            const Expanded(
+            Expanded(
               child: ClipRRect(
-                  borderRadius: BorderRadius.only(
+                  borderRadius: const BorderRadius.only(
                     topLeft: Radius.circular(20),
                     topRight: Radius.circular(20),
                   ),
-                  child: Placeholder()),
+                  child: Image.network(
+                    productModel.image,
+                    fit: BoxFit.cover,
+                  )
+                  //  ClipRRect(
+                  //   child: Image.network(productModel.image),
+                  // ),
+                  ),
             ),
             const SizedBox(
               height: 5,
             ),
             ProductCardRow(
-              text: 'Product',
-              iconText: '5 min',
-              icon: Icon(
-                Icons.schedule_rounded,
-                size: 15,
-                color: Theme.of(context).primaryColor,
-              ),
+              text: productModel.title.substring(0, 10),
               textColor: Theme.of(context).colorScheme.primary,
             ),
             ProductCardRow(
-              text: r'40 EGP',
-              iconText: 'Assuit',
+              text: '${productModel.price} EGP',
+              iconText: format.format(productModel.createdAt!),
               icon: Icon(
-                Icons.location_on_rounded,
+                Icons.schedule_rounded,
                 size: 15,
                 color: Theme.of(context).primaryColor,
               ),
@@ -72,8 +81,8 @@ class ProductCardRow extends StatelessWidget {
   const ProductCardRow({
     super.key,
     required this.text,
-    @required this.iconText,
-    @required this.icon,
+    this.iconText,
+    this.icon,
     required this.textColor,
   });
   final String text;
@@ -83,7 +92,7 @@ class ProductCardRow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 4),
+      padding: const EdgeInsets.symmetric(horizontal: 8),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -92,9 +101,16 @@ class ProductCardRow extends StatelessWidget {
             style: TextStyle(
                 color: textColor, fontSize: 18, fontWeight: FontWeight.bold),
           ),
-          Row(
-            children: [icon!, Text(iconText!)],
-          )
+          icon == null
+              ? const SizedBox(
+                  width: 1,
+                )
+              : Row(
+                  children: [
+                    icon!,
+                    Text(iconText!),
+                  ],
+                )
         ],
       ),
     );
