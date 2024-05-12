@@ -35,70 +35,73 @@ class ProductPage extends StatelessWidget {
           )
         ],
       ),
-      body: FutureBuilder(
-          future: ProductServices().getProductById(productModel.id!),
-          builder: (context, snapshot) {
-            if (snapshot.hasData) {
-              return SafeArea(
-                child: SingleChildScrollView(
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      ClipRRect(
-                        child: Image.network(
-                          productModel.image,
-                          width: double.infinity,
-                          height: 300,
-                          fit: BoxFit.cover,
+      body: SafeArea(
+        child: FutureBuilder(
+            future: ProductServices().getProductById(productModel.id!),
+            builder: (context, snapshot) {
+              if (snapshot.hasData) {
+                return SafeArea(
+                  child: SingleChildScrollView(
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        ClipRRect(
+                          child: Image.network(
+                            productModel.image,
+                            width: double.infinity,
+                            height: 300,
+                            fit: BoxFit.cover,
+                          ),
                         ),
-                      ),
-                      const SizedBox(
-                        height: 10,
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                        child: Text(
-                          productModel.title,
-                          textAlign: TextAlign.start,
-                          style: Theme.of(context).textTheme.displayLarge,
+                        const SizedBox(
+                          height: 10,
                         ),
-                      ),
-                      const SizedBox(
-                        height: 10,
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                        child: Text(
-                          productModel.desc,
-                          textAlign: TextAlign.start,
-                          style: Theme.of(context).textTheme.bodyLarge,
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                          child: Text(
+                            productModel.title,
+                            textAlign: TextAlign.start,
+                            style: Theme.of(context).textTheme.displayLarge,
+                          ),
                         ),
-                      ),
-                      const SizedBox(
-                        height: 20,
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              '${productModel.price} EGP',
-                              style: Theme.of(context).textTheme.headlineLarge,
-                            ),
-                            const CounterContainer()
-                          ],
+                        const SizedBox(
+                          height: 10,
                         ),
-                      )
-                    ],
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                          child: Text(
+                            productModel.desc,
+                            textAlign: TextAlign.start,
+                            style: Theme.of(context).textTheme.bodyLarge,
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 20,
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                '${productModel.price} EGP',
+                                style:
+                                    Theme.of(context).textTheme.headlineLarge,
+                              ),
+                              const CounterContainer()
+                            ],
+                          ),
+                        )
+                      ],
+                    ),
                   ),
-                ),
-              );
-            } else {
-              return const Center(child: CircularProgressIndicator());
-            }
-          }),
+                );
+              } else {
+                return const Center(child: CircularProgressIndicator());
+              }
+            }),
+      ),
       bottomNavigationBar: const ProductBottomNav(),
     );
   }

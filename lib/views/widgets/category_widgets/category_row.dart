@@ -18,22 +18,25 @@ class CategoryRow extends StatelessWidget {
           builder: (context, snapshot) {
             if (snapshot.hasData) {
               List<CategotyModel> categories = snapshot.data!;
-              return Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  ...categories.map((e) {
-                    return CategoryCard(
-                      onTap: () => Navigator.pushNamed(
-                        context,
-                        CategoryProducts.routeName,
-                        arguments: e,
-                      ),
-                      categotyModel: e,
-                      image: 'assets/skin.png',
-                      color: const Color(0xFF41C9E2),
-                    );
-                  })
-                ],
+              return Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    ...categories.map((e) {
+                      return CategoryCard(
+                        onTap: () => Navigator.pushNamed(
+                          context,
+                          CategoryProducts.routeName,
+                          arguments: e,
+                        ),
+                        categotyModel: e,
+                        image: 'assets/skin.png',
+                        color: const Color(0xFF41C9E2),
+                      );
+                    })
+                  ],
+                ),
               );
             } else {
               return const Center(child: CircularProgressIndicator());
