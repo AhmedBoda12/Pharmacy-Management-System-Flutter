@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class category_card extends StatelessWidget {
-  const category_card({
-    required this.category_item_num,
-    required this.category_name,
+class CategoryCard extends StatelessWidget {
+  const CategoryCard({
+    required this.categoryItemNum,
+    required this.categoryName,
     super.key,
   });
-  final String category_name;
-  final int category_item_num;
+  final String categoryName;
+  final int categoryItemNum;
 
   @override
   Widget build(BuildContext context) {
@@ -30,11 +30,11 @@ class category_card extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text("$category_name",
-                      style:
-                          TextStyle(fontSize: 30, fontWeight: FontWeight.bold)),
-                  Text("number of items : $category_item_num",
-                      style: TextStyle(fontSize: 15, color: Colors.grey)),
+                  Text(categoryName,
+                      style: const TextStyle(
+                          fontSize: 30, fontWeight: FontWeight.bold)),
+                  Text("number of items : $categoryItemNum",
+                      style: const TextStyle(fontSize: 15, color: Colors.grey)),
                 ],
               ),
               Column(
@@ -43,8 +43,8 @@ class category_card extends StatelessWidget {
                     style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.indigo),
                     onPressed: () {},
-                    child: Text(
-                      " Edite ",
+                    child: const Text(
+                      " Edit ",
                       style: TextStyle(color: Colors.white),
                     ),
                   ),
@@ -52,7 +52,7 @@ class category_card extends StatelessWidget {
                     style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.indigo),
                     onPressed: () {},
-                    child: Text(
+                    child: const Text(
                       "Delete",
                       style: TextStyle(color: Colors.white),
                     ),

@@ -24,33 +24,33 @@ class ManageUsersPage extends StatelessWidget {
         floatingActionButton: const FloatAction(),
         body: const SingleChildScrollView(
             child: Column(children: [
-          user_card(
-            user_authorization: true,
-            user_name: "Mahmoud Elhoseny",
+          UserCard(
+            userAuthorization: true,
+            userName: "Mahmoud Elhoseny",
           ),
-          user_card(
-            user_authorization: true,
-            user_name: "Mahmoud Elhoseny",
+          UserCard(
+            userAuthorization: true,
+            userName: "Mahmoud Elhoseny",
           ),
-          user_card(
-            user_authorization: true,
-            user_name: "Mahmoud Elhoseny",
+          UserCard(
+            userAuthorization: true,
+            userName: "Mahmoud Elhoseny",
           ),
-          user_card(
-            user_authorization: true,
-            user_name: "Mahmoud Elhoseny",
+          UserCard(
+            userAuthorization: true,
+            userName: "Mahmoud Elhoseny",
           ),
-          user_card(
-            user_authorization: true,
-            user_name: "Mahmoud Elhoseny",
+          UserCard(
+            userAuthorization: true,
+            userName: "Mahmoud Elhoseny",
           ),
-          user_card(
-            user_authorization: true,
-            user_name: "Mahmoud Elhoseny",
+          UserCard(
+            userAuthorization: true,
+            userName: "Mahmoud Elhoseny",
           ),
-          user_card(
-            user_authorization: true,
-            user_name: "Mahmoud Elhoseny",
+          UserCard(
+            userAuthorization: true,
+            userName: "Mahmoud Elhoseny",
           ),
         ])));
   }

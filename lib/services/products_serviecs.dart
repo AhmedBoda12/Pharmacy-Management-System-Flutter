@@ -52,6 +52,18 @@ class ProductServices {
     return data;
   }
 
+  Future<ProductModel> addProduct(ProductModel productModel) async {
+    String? token = await getToken();
+
+    var data = await Api().post(
+      url: '$baseUrl/product/create',
+      body: productModel.toJson(),
+      token: token,
+    );
+
+    return ProductModel.fromJson(data);
+  }
+
   // Function to retrieve token from SharedPreferences
   Future<String?> getToken() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();

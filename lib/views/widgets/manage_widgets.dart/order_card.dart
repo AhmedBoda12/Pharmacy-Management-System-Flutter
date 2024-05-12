@@ -1,18 +1,17 @@
 import 'package:flutter/material.dart';
 
-class order_card extends StatelessWidget {
-  const order_card({
-    required this.order_id,
-    required this.order_date,
-    required this.order_item_num,
-    required this.order_price,
+class OrderCard extends StatelessWidget {
+  const OrderCard({
+    required this.orderId,
+    required this.orderDate,
+    required this.orderItemNum,
+    required this.orderPrice,
     super.key,
   });
-  final int order_id;
-  final String order_date;
-  final int order_item_num;
-  final double order_price;
-
+  final int orderId;
+  final String orderDate;
+  final int orderItemNum;
+  final double orderPrice;
 
   @override
   Widget build(BuildContext context) {
@@ -35,16 +34,15 @@ class order_card extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text("Order Number: #$order_id ",
-                      style:
-                          TextStyle(fontSize: 30, fontWeight: FontWeight.bold)),
-                  Text("Order Date: $order_date ",
-                      style:
-                          TextStyle(fontSize: 15, color: Colors.grey)),
-                  Text("Number of items : $order_item_num ",
-                      style: TextStyle(fontSize: 15, color: Colors.grey)),
-                  Text("Total Price : $order_price L.E",
-                      style: TextStyle(fontSize: 15, color: Colors.grey)),
+                  Text("Order Number: #$orderId ",
+                      style: const TextStyle(
+                          fontSize: 30, fontWeight: FontWeight.bold)),
+                  Text("Order Date: $orderDate ",
+                      style: const TextStyle(fontSize: 15, color: Colors.grey)),
+                  Text("Number of items : $orderItemNum ",
+                      style: const TextStyle(fontSize: 15, color: Colors.grey)),
+                  Text("Total Price : $orderPrice L.E",
+                      style: const TextStyle(fontSize: 15, color: Colors.grey)),
                 ],
               ),
               Column(
@@ -53,8 +51,8 @@ class order_card extends StatelessWidget {
                     style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.indigo),
                     onPressed: () {},
-                    child: Text(
-                      " Edite ",
+                    child: const Text(
+                      "Edit",
                       style: TextStyle(color: Colors.white),
                     ),
                   ),
@@ -62,7 +60,7 @@ class order_card extends StatelessWidget {
                     style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.indigo),
                     onPressed: () {},
-                    child: Text(
+                    child: const Text(
                       "Delete",
                       style: TextStyle(color: Colors.white),
                     ),
@@ -71,7 +69,7 @@ class order_card extends StatelessWidget {
                     style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.indigo),
                     onPressed: () {},
-                    child: Text(
+                    child: const Text(
                       " Print ",
                       style: TextStyle(color: Colors.white),
                     ),

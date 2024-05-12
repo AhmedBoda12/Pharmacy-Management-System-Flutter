@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
 File? _image;
-final Picker = ImagePicker();
+final picker = ImagePicker();
 
 class AddImageButton extends StatefulWidget {
   const AddImageButton({
@@ -19,14 +19,12 @@ class _AddImageButtonState extends State<AddImageButton> {
   Future getImage() async {
     // ignore: non_constant_identifier_names
     final PickedFile =
-        await Picker.pickImage(source: ImageSource.gallery, imageQuality: 80);
+        await picker.pickImage(source: ImageSource.gallery, imageQuality: 80);
     setState(() {
       if (PickedFile != null) {
         _image = File(PickedFile.path);
         // widget.imgUrl = null;
-      } else {
-        print("No image selected");
-      }
+      } else {}
     });
   }
 
@@ -36,17 +34,15 @@ class _AddImageButtonState extends State<AddImageButton> {
       padding: const EdgeInsets.only(top: 8.0),
       child: Column(
         children: [
-          ElevatedButton(
-            style: ElevatedButton.styleFrom(backgroundColor: Colors.indigo),
+          const PageContainer(),
+          FilledButton(
             onPressed: () {
               getImage();
             },
             child: const Text(
-              "Add image of the product",
-              style: TextStyle(color: Colors.white, fontSize: 20),
+              "Add image",
             ),
           ),
-          PageContainer()
         ],
       ),
     );
