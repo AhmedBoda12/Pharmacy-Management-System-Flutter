@@ -107,7 +107,8 @@ class _LoginFormState extends State<LoginForm> {
       if (context.mounted) {
         loggedUser.isAdmin!
             ? Navigator.pushReplacementNamed(context, DashBoardPage.routeName)
-            : Navigator.pushReplacementNamed(context, MainPage.routeName);
+            : Navigator.pushReplacementNamed(context, MainPage.routeName,
+                arguments: loggedUser);
       }
     } catch (e) {
       if (context.mounted) {

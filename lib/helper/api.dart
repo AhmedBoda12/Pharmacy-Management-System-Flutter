@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 
@@ -34,6 +36,27 @@ class Api {
         data: body,
         options: Options(headers: headers),
       );
+      if (response.statusCode == 200 || response.statusCode == 201) {
+        return response.data;
+      }
+    } on DioException catch (error) {
+      return {'success': false, 'message': 'Error: $error'};
+    }
+  }
+
+  Future<dynamic> put(
+      {required String url, @required dynamic body, String? token}) async {
+    Map<String, String> headers = {};
+    if (token != null) {
+      headers.addAll({'token': 'Bearer $token'});
+    }
+    try {
+      Response response = await _dio.put(
+        url,
+        data: body,
+        options: Options(headers: headers),
+      );
+      log(response.data);
       if (response.statusCode == 200 || response.statusCode == 201) {
         return response.data;
       }

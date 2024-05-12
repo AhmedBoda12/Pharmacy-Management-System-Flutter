@@ -1,8 +1,6 @@
-import 'dart:convert';
-
 class UserModel {
   final String? id;
-  final String username;
+  final String? username;
   final String? firstname;
   final String? lastname;
   final String? email;
@@ -14,7 +12,7 @@ class UserModel {
 
   UserModel({
     this.id,
-    required this.username,
+    this.username,
     this.firstname,
     this.lastname,
     this.email,
@@ -37,8 +35,6 @@ class UserModel {
         accessToken: json["accessToken"],
       );
 
-  factory UserModel.fromJson(String str) => UserModel.fromMap(json.decode(str));
-
   Map<String, dynamic> regisetToJson() {
     return {
       'username': username,
@@ -52,6 +48,15 @@ class UserModel {
   Map<String, dynamic> loginToJson() {
     return {
       "username": username,
+      "password": password,
+    };
+  }
+
+  Map<String, dynamic> editToJson() {
+    return {
+      "firstname": firstname,
+      "lastname": lastname,
+      "email": email,
       "password": password,
     };
   }
