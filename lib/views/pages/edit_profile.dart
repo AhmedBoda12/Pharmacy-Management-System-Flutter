@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import 'package:get/get.dart';
 
 class UpdateProfileScreen extends StatelessWidget {
-  const UpdateProfileScreen({Key? key}) : super(key: key);
+  const UpdateProfileScreen({super.key});
   static const String routeName = 'UpdateProfileScreen';
   @override
   Widget build(BuildContext context) {
@@ -12,8 +10,8 @@ class UpdateProfileScreen extends StatelessWidget {
         leading: IconButton(
             onPressed: () => Navigator.of(context).pop(),
             icon: const Icon(Icons.arrow_back_ios_new_rounded)),
-        title:
-            Text("EditProfile", style: Theme.of(context).textTheme.headline4),
+        title: Text("EditProfile",
+            style: Theme.of(context).textTheme.headlineMedium),
       ),
       body: SingleChildScrollView(
         child: Container(
@@ -60,8 +58,8 @@ class UpdateProfileScreen extends StatelessWidget {
                               BorderSide(color: Theme.of(context).primaryColor),
                           borderRadius: BorderRadius.circular(30),
                         ),
-                        label: Text("FullName"),
-                        prefixIcon: Icon(Icons.person),
+                        label: const Text("FullName"),
+                        prefixIcon: const Icon(Icons.person),
                       ),
                     ),
                     const SizedBox(height: 20),
@@ -72,8 +70,8 @@ class UpdateProfileScreen extends StatelessWidget {
                             borderSide: BorderSide(
                                 color: Theme.of(context).primaryColor),
                           ),
-                          label: Text("Email"),
-                          prefixIcon: Icon(Icons.email)),
+                          label: const Text("Email"),
+                          prefixIcon: const Icon(Icons.email)),
                     ),
                     const SizedBox(height: 20),
                     TextFormField(
@@ -83,8 +81,8 @@ class UpdateProfileScreen extends StatelessWidget {
                             borderSide: BorderSide(
                                 color: Theme.of(context).primaryColor),
                           ),
-                          label: Text("PhoneNo"),
-                          prefixIcon: Icon(Icons.phone)),
+                          label: const Text("PhoneNo"),
+                          prefixIcon: const Icon(Icons.phone)),
                     ),
                     const SizedBox(height: 20),
                     TextFormField(
@@ -108,8 +106,8 @@ class UpdateProfileScreen extends StatelessWidget {
                     SizedBox(
                       width: double.infinity,
                       child: ElevatedButton(
-                        onPressed: () =>
-                            Get.to(() => const UpdateProfileScreen()),
+                        onPressed: () => Navigator.pushNamed(
+                            context, UpdateProfileScreen.routeName),
                         style: ElevatedButton.styleFrom(
                             backgroundColor: Theme.of(context).primaryColor,
                             side: BorderSide.none,

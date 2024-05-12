@@ -44,15 +44,12 @@ class PharmacyApp extends StatelessWidget {
         MainPage.routeName: (context) => const MainPage(),
         AllProductsPage.routeName: (context) => const AllProductsPage(),
         ProductPage.routeName: (context) => const ProductPage(),
-
         UpdateProfileScreen.routeName: (context) => const UpdateProfileScreen(),
-        OrderListItems.routeName: (context) => OrderListItems(),
-
+        OrderListItems.routeName: (context) => const OrderListItems(),
         CartPage.routeName: (context) => const CartPage(),
         CheckoutPage.routeName: (context) => const CheckoutPage(),
         CategoryProducts.routeName: (context) => const CategoryProducts(),
         DashBoardPage.routeName: (context) => DashBoardPage(),
-
       },
     );
   }

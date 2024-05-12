@@ -4,6 +4,8 @@ import '../widgets/profile_widgets/order_history_card.dart';
 class OrderListItems extends StatelessWidget {
   static const String routeName = 'OrderListItems';
 
+  const OrderListItems({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -12,13 +14,14 @@ class OrderListItems extends StatelessWidget {
           onPressed: () => Navigator.of(context).pop(),
           icon: const Icon(Icons.arrow_back_ios_new_rounded),
         ),
-        title: Text("My Orders", style: Theme.of(context).textTheme.headline4),
+        title: Text("My Orders",
+            style: Theme.of(context).textTheme.headlineMedium),
       ),
       body: ListView.builder(
         padding: const EdgeInsets.all(20),
         itemCount: 10, // Replace with the actual number of orders
         itemBuilder: (context, index) {
-          return OrderHistoryCard(
+          return const OrderHistoryCard(
             orderDate: 'May 10, 2024', // Replace with the actual order date
             orderTime: '10:00 AM', // Replace with the actual order time
             orderStatus: 'Delivered', // Replace with the actual order status

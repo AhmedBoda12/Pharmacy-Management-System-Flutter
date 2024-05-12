@@ -1,11 +1,10 @@
 import 'package:faith_pharm/views/pages/edit_profile.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:faith_pharm/views/widgets/profile_widgets/ProfileMenuWidget.dart';
 import 'package:faith_pharm/views/pages/orders.dart';
+import 'package:faith_pharm/views/widgets/profile_widgets/profile_menu_widget.dart';
 
 class ProfileScreen extends StatelessWidget {
-  const ProfileScreen({Key? key}) : super(key: key);
+  const ProfileScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -15,11 +14,12 @@ class ProfileScreen extends StatelessWidget {
           onPressed: () => Navigator.of(context).pop(),
           icon: const Icon(Icons.arrow_back_ios_new_rounded),
         ),
-        title: Text("Profile", style: Theme.of(context).textTheme.headline4),
+        title:
+            Text("Profile", style: Theme.of(context).textTheme.headlineMedium),
         actions: [
           IconButton(
             onPressed: () {},
-            icon: Icon(Icons.mode_night),
+            icon: const Icon(Icons.mode_night),
           )
         ],
       ),
@@ -51,7 +51,7 @@ class ProfileScreen extends StatelessWidget {
                         borderRadius: BorderRadius.circular(100),
                         color: Theme.of(context).primaryColor,
                       ),
-                      child: Icon(
+                      child: const Icon(
                         Icons.edit,
                         color: Colors.white,
                       ),
@@ -62,11 +62,11 @@ class ProfileScreen extends StatelessWidget {
               const SizedBox(height: 10),
               Text(
                 "ProfileHeading",
-                style: Theme.of(context).textTheme.headline4,
+                style: Theme.of(context).textTheme.headlineMedium,
               ),
               Text(
                 "ProfileSubHeading",
-                style: Theme.of(context).textTheme.bodyText2,
+                style: Theme.of(context).textTheme.bodyMedium,
               ),
               const SizedBox(height: 20),
 
@@ -76,7 +76,7 @@ class ProfileScreen extends StatelessWidget {
                 child: ElevatedButton(
                   onPressed: () {
                     Navigator.of(context).push(MaterialPageRoute(
-                      builder: (Context) => UpdateProfileScreen(),
+                      builder: (context) => const UpdateProfileScreen(),
                     ));
                   },
                   style: ElevatedButton.styleFrom(
@@ -104,7 +104,7 @@ class ProfileScreen extends StatelessWidget {
                 icon: Icons.wallet,
                 onPress: () {
                   Navigator.of(context).push(MaterialPageRoute(
-                    builder: (Context) => OrderListItems(),
+                    builder: (context) => const OrderListItems(),
                   ));
                 },
               ),
@@ -117,29 +117,28 @@ class ProfileScreen extends StatelessWidget {
                 textColor: Colors.red,
                 endIcon: false,
                 onPress: () {
-                  Get.defaultDialog(
-                    title: "LOGOUT",
-                    titleStyle: const TextStyle(fontSize: 20),
-                    content: const Padding(
-                      padding: EdgeInsets.symmetric(vertical: 15.0),
-                      child: Text("Are you sure, you want to Logout?"),
-                    ),
-                    confirm: ElevatedButton(
-                      onPressed: () {
-                        // Implement your logout logic here
-                        Get.back(); // Example: Close the dialog
-                      },
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.redAccent,
-                        side: BorderSide.none,
-                      ),
-                      child: const Text("Yes"),
-                    ),
-                    cancel: OutlinedButton(
-                      onPressed: () => Get.back(),
-                      child: const Text("No"),
-                    ),
-                  );
+                  // (
+                  //   title: "LOGOUT",
+                  //   titleStyle: const TextStyle(fontSize: 20),
+                  //   content: const Padding(
+                  //     padding: EdgeInsets.symmetric(vertical: 15.0),
+                  //     child: Text("Are you sure, you want to Logout?"),
+                  //   ),
+                  //   confirm: ElevatedButton(
+                  //     onPressed: () {
+                  //       // Implement your logout logic here
+                  //     },
+                  //     style: ElevatedButton.styleFrom(
+                  //       backgroundColor: Colors.redAccent,
+                  //       side: BorderSide.none,
+                  //     ),
+                  //     child: const Text("Yes"),
+                  //   ),
+                  //   cancel: OutlinedButton(
+                  //     onPressed: () => Navigator.pop(context),
+                  //     child: const Text("No"),
+                  //   ),
+                  // );
                 },
               ),
             ],

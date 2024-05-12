@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 
 class ProfileMenuWidget extends StatelessWidget {
   const ProfileMenuWidget({
-    Key? key,
+    super.key,
     required this.title,
     required this.icon,
     required this.onPress,
     this.endIcon = true,
     this.textColor,
-  }) : super(key: key);
+  });
 
   final String title;
   final IconData icon;
@@ -36,7 +36,7 @@ class ProfileMenuWidget extends StatelessWidget {
       ),
       title: Text(title,
           style:
-              Theme.of(context).textTheme.bodyText1?.apply(color: textColor)),
+              Theme.of(context).textTheme.bodyLarge?.apply(color: textColor)),
       trailing: endIcon
           ? Container(
               width: 30,
@@ -45,7 +45,7 @@ class ProfileMenuWidget extends StatelessWidget {
                 borderRadius: BorderRadius.circular(100),
                 color: Colors.grey.withOpacity(0.1),
               ),
-              child: Icon(Icons.arrow_back_ios_new_rounded,
+              child: const Icon(Icons.arrow_back_ios_new_rounded,
                   color: Colors.grey), // Specify color here
             )
           : null,

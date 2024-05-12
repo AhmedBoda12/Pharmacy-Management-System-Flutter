@@ -6,7 +6,8 @@ class OrderHistoryCard extends StatelessWidget {
   final String orderStatus;
   final List<String> orderItems;
 
-  OrderHistoryCard({
+  const OrderHistoryCard({
+    super.key,
     required this.orderDate,
     required this.orderTime,
     required this.orderStatus,
@@ -23,15 +24,15 @@ class OrderHistoryCard extends StatelessWidget {
           children: [
             Text(
               'Order Date: $orderDate',
-              style: TextStyle(fontSize: 16),
+              style: const TextStyle(fontSize: 16),
             ),
             Text(
               'Order Time: $orderTime',
-              style: TextStyle(fontSize: 16),
+              style: const TextStyle(fontSize: 16),
             ),
             Text(
               'Order Status: $orderStatus',
-              style: TextStyle(fontSize: 16),
+              style: const TextStyle(fontSize: 16),
             ),
             Wrap(
               spacing: 5.0,
