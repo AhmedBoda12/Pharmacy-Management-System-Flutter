@@ -8,6 +8,8 @@ import 'package:faith_pharm/views/pages/login_page.dart';
 import 'package:faith_pharm/views/pages/product_page.dart';
 import 'package:faith_pharm/views/pages/signup_page.dart';
 import 'package:flutter/material.dart';
+import 'package:faith_pharm/views/pages/edit_profile.dart';
+import 'package:faith_pharm/views/pages/orders.dart';
 
 void main() {
   runApp(const PharmacyApp());
@@ -42,10 +44,15 @@ class PharmacyApp extends StatelessWidget {
         MainPage.routeName: (context) => const MainPage(),
         AllProductsPage.routeName: (context) => const AllProductsPage(),
         ProductPage.routeName: (context) => const ProductPage(),
+
+        UpdateProfileScreen.routeName: (context) => const UpdateProfileScreen(),
+        OrderListItems.routeName: (context) => OrderListItems(),
+
         CartPage.routeName: (context) => const CartPage(),
         CheckoutPage.routeName: (context) => const CheckoutPage(),
         CategoryProducts.routeName: (context) => const CategoryProducts(),
         DashBoardPage.routeName: (context) => DashBoardPage(),
+
       },
     );
   }

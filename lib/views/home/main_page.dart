@@ -3,6 +3,7 @@ import 'package:faith_pharm/views/pages/category_page.dart';
 import 'package:faith_pharm/views/pages/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:stylish_bottom_bar/stylish_bottom_bar.dart';
+import 'package:faith_pharm/views/pages/profile_screen.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({super.key});
@@ -78,7 +79,10 @@ class _MainPageState extends State<MainPage> {
           HomePage(),
           CategoryPage(),
           CartPage(),
-          Center(child: Text('Profile')),
+
+          ProfileScreen(),
+
+ 
         ],
       ),
     );
