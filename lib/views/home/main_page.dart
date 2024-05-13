@@ -7,7 +7,9 @@ import 'package:stylish_bottom_bar/stylish_bottom_bar.dart';
 import 'package:faith_pharm/views/pages/profile_page.dart';
 
 class MainPage extends StatefulWidget {
-  const MainPage({super.key});
+  const MainPage({
+    super.key,
+  });
   static const String routeName = 'HomePage';
   @override
   State<MainPage> createState() => _MainPageState();
@@ -16,6 +18,7 @@ class MainPage extends StatefulWidget {
 class _MainPageState extends State<MainPage> {
   int selected = 0;
   final controller = PageController();
+
   @override
   void dispose() {
     controller.dispose();
@@ -24,8 +27,7 @@ class _MainPageState extends State<MainPage> {
 
   @override
   Widget build(BuildContext context) {
-    UserModel userModel =
-        ModalRoute.of(context)!.settings.arguments as UserModel;
+    String userId = ModalRoute.of(context)!.settings.arguments as String;
 
     return Scaffold(
       extendBody: true,
@@ -83,7 +85,7 @@ class _MainPageState extends State<MainPage> {
           const CategoryPage(),
           const CartPage(),
           ProfileScreen(
-            userId: userModel.id!,
+            userId: userId,
           ),
         ],
       ),

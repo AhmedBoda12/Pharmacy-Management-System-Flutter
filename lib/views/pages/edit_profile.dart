@@ -1,12 +1,13 @@
 import 'package:faith_pharm/models/user_model.dart';
 import 'package:faith_pharm/services/users_services.dart';
+import 'package:faith_pharm/views/home/main_page.dart';
+import 'package:faith_pharm/views/pages/profile_page.dart';
 import 'package:flutter/material.dart';
 
 class UpdateProfileScreen extends StatefulWidget {
-  const UpdateProfileScreen({super.key, this.userId});
+  const UpdateProfileScreen({super.key, required this.user});
   static const String routeName = 'UpdateProfileScreen';
-  final String? userId;
-
+  final UserModel user;
   @override
   State<UpdateProfileScreen> createState() => _UpdateProfileScreenState();
 }
@@ -22,11 +23,11 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: IconButton(
-            onPressed: () => Navigator.of(context).pop(),
-            icon: const Icon(Icons.arrow_back_ios_new_rounded)),
+        // leading: IconButton(
+        //     onPressed: () => Navigator.of(context).pop(),
+        //     icon: const Icon(Icons.arrow_back_ios_new_rounded)),
         title: Text("EditProfile",
-            style: Theme.of(context).textTheme.headlineMedium),
+            style: Theme.of(context).textTheme.displayLarge),
       ),
       body: SingleChildScrollView(
         child: Container(
@@ -76,6 +77,7 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                           borderRadius: BorderRadius.circular(30),
                         ),
                         label: const Text("First name"),
+                        hintText: widget.user.firstname,
                         prefixIcon: const Icon(Icons.person),
                       ),
                     ),
@@ -89,6 +91,7 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                               BorderSide(color: Theme.of(context).primaryColor),
                         ),
                         label: const Text("Last name"),
+                        hintText: widget.user.lastname,
                       ),
                     ),
                     const SizedBox(height: 20),
@@ -101,6 +104,7 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                                 color: Theme.of(context).primaryColor),
                           ),
                           label: const Text("Email"),
+                          hintText: widget.user.email,
                           prefixIcon: const Icon(Icons.email)),
                     ),
                     const SizedBox(height: 20),
@@ -132,7 +136,9 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                     SizedBox(
                       width: double.infinity,
                       child: FilledButton(
-                        onPressed: () => _editUser(context),
+                        onPressed: () {
+                          _editUser(context);
+                        },
                         child: const Text(
                           "Submit",
                         ),
@@ -160,24 +166,34 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
     );
   }
 
-  Future<dynamic> _editUser(BuildContext context) async {
+  Future<void> _editUser(BuildContext context) async {
     final edit = UserServices();
     UserModel user = UserModel(
-        firstname: _firstnameController.text,
-        lastname: _lastnameController.text,
-        email: _emailController.text,
-        password: _passowrdController.text);
-
+      firstname: _firstnameController.text.isNotEmpty
+          ? _firstnameController.text
+          : widget.user.firstname,
+      lastname: _lastnameController.text.isNotEmpty
+          ? _lastnameController.text
+          : widget.user.lastname,
+      email: _emailController.text.isNotEmpty
+          ? _emailController.text
+          : widget.user.email,
+      password:
+          _passowrdController.text.isNotEmpty ? _passowrdController.text : null,
+    );
     try {
-      await edit.editUser(widget.userId!, user);
-      if (context.mounted) Navigator.pop(context);
+      await edit.editUser(widget.user.id!, user);
+      if (context.mounted) {
+        Navigator.pushReplacementNamed(context, MainPage.routeName,
+            arguments: widget.user.id);
+      }
     } catch (e) {
       if (context.mounted) {
         showDialog(
           context: context,
           builder: (context) => AlertDialog(
             title: const Text('Error'),
-            content: const Text('invalid login'),
+            content: Text(e.toString()),
             actions: [
               TextButton(
                 onPressed: () {

@@ -26,6 +26,7 @@ class _ManageUsersPageState extends State<ManageUsersPage> {
     return Scaffold(
       extendBody: true,
       appBar: AppBar(
+        foregroundColor: Theme.of(context).colorScheme.onPrimary,
         backgroundColor: Theme.of(context).colorScheme.primary,
         title: const CustomSearchBar(hint: "Which user do you search?"),
       ),

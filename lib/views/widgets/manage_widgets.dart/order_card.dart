@@ -47,31 +47,22 @@ class OrderCard extends StatelessWidget {
               ),
               Column(
                 children: [
-                  ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.indigo),
+                  FilledButton(
                     onPressed: () {},
                     child: const Text(
                       "Edit",
-                      style: TextStyle(color: Colors.white),
                     ),
                   ),
-                  ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.indigo),
+                  FilledButton(
                     onPressed: () {},
                     child: const Text(
                       "Delete",
-                      style: TextStyle(color: Colors.white),
                     ),
                   ),
-                  ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.indigo),
+                  FilledButton(
                     onPressed: () {},
                     child: const Text(
                       " Print ",
-                      style: TextStyle(color: Colors.white),
                     ),
                   )
                 ],

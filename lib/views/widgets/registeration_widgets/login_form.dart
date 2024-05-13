@@ -90,7 +90,7 @@ class _LoginFormState extends State<LoginForm> {
                         if (_formKey.currentState!.validate()) {
                           _formKey.currentState!.save();
                           setState(() {
-                            isLoading = true;
+                            isLoading = !isLoading;
                           });
                           _login(context);
                         }
@@ -115,7 +115,7 @@ class _LoginFormState extends State<LoginForm> {
         loggedUser.isAdmin!
             ? Navigator.pushReplacementNamed(context, DashBoardPage.routeName)
             : Navigator.pushReplacementNamed(context, MainPage.routeName,
-                arguments: loggedUser);
+                arguments: loggedUser.id);
       }
     } catch (e) {
       if (context.mounted) {
@@ -128,6 +128,9 @@ class _LoginFormState extends State<LoginForm> {
               TextButton(
                 onPressed: () {
                   Navigator.pop(context);
+                  setState(() {
+                    isLoading = !isLoading;
+                  });
                 },
                 child: const Text('OK'),
               ),

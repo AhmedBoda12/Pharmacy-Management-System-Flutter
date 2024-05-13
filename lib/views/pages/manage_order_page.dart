@@ -11,15 +11,9 @@ class ManageOrdersPage extends StatelessWidget {
     return Scaffold(
       extendBody: true,
       appBar: AppBar(
-        backgroundColor: Colors.indigo,
-        actions: const [
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: 12),
-            child: SizedBox(
-                width: 300,
-                child: CustomSearchBar(hint: "Which order do you search?")),
-          ),
-        ],
+        foregroundColor: Theme.of(context).colorScheme.onPrimary,
+        backgroundColor: Theme.of(context).colorScheme.primary,
+        title: const CustomSearchBar(hint: "Which order do you search?"),
       ),
       floatingActionButton: const FloatAction(),
       body: const SingleChildScrollView(
@@ -27,41 +21,6 @@ class ManageOrdersPage extends StatelessWidget {
           children: [
             OrderCard(
                 orderId: 1,
-                orderDate: "7 Aug 2024",
-                orderItemNum: 5,
-                orderPrice: 55.5),
-            OrderCard(
-                orderId: 2,
-                orderDate: "7 Aug 2024",
-                orderItemNum: 5,
-                orderPrice: 55.5),
-            OrderCard(
-                orderId: 3,
-                orderDate: "7 Aug 2024",
-                orderItemNum: 5,
-                orderPrice: 55.5),
-            OrderCard(
-                orderId: 4,
-                orderDate: "7 Aug 2024",
-                orderItemNum: 5,
-                orderPrice: 55.5),
-            OrderCard(
-                orderId: 5,
-                orderDate: "7 Aug 2024",
-                orderItemNum: 5,
-                orderPrice: 55.5),
-            OrderCard(
-                orderId: 6,
-                orderDate: "7 Aug 2024",
-                orderItemNum: 5,
-                orderPrice: 55.5),
-            OrderCard(
-                orderId: 7,
-                orderDate: "7 Aug 2024",
-                orderItemNum: 5,
-                orderPrice: 55.5),
-            OrderCard(
-                orderId: 8,
                 orderDate: "7 Aug 2024",
                 orderItemNum: 5,
                 orderPrice: 55.5),

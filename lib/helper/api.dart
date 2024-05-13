@@ -56,7 +56,6 @@ class Api {
         data: body,
         options: Options(headers: headers),
       );
-      log(response.data);
       if (response.statusCode == 200 || response.statusCode == 201) {
         return response.data;
       }

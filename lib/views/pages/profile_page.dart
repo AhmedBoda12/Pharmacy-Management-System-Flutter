@@ -79,7 +79,7 @@ class ProfileScreen extends StatelessWidget {
                           onPressed: () {
                             Navigator.of(context).push(MaterialPageRoute(
                               builder: (context) => UpdateProfileScreen(
-                                userId: userModel.id!,
+                                user: userModel,
                               ),
                             ));
                           },

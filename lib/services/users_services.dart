@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:developer';
 
 import 'package:faith_pharm/constants.dart';
@@ -43,15 +44,17 @@ class UserServices {
     return data;
   }
 
-  Future<UserModel> editUser(String id, UserModel userModel) async {
+  Future<void> editUser(String id, UserModel userModel) async {
     String? token = await getToken();
+    String bodyJson = json.encode(userModel.editToJson());
+
     var data = await Api().put(
-      url: '$baseUrl/user/edit/$id',
-      body: userModel.editToJson(),
+      url: '$baseUrl/user/update/$id',
+      body: bodyJson,
       token: token,
     );
-    log(data);
-    return UserModel.fromMap(data);
+
+    return data;
   }
 
   Future<String?> getToken() async {
