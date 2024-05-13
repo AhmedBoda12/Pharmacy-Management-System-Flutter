@@ -25,7 +25,13 @@ class UserServices {
       token: token,
     );
 
-    return data.map((e) => UserModel.fromMap(e)).toList();
+    List<UserModel> users = [];
+    for (int i = 0; i < data.length; i++) {
+      users.add(
+        UserModel.fromMap(data[i]),
+      );
+    }
+    return users;
   }
 
   Future<void> deleteUser(String id) async {
@@ -34,7 +40,6 @@ class UserServices {
       url: '$baseUrl/user/delete/$id',
       token: token,
     );
-
     return data;
   }
 

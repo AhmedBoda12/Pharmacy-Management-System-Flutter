@@ -83,8 +83,21 @@ class _ManageProductsPageState extends State<ManageProductsPage> {
       setState(() {
         _products.removeAt(index);
       });
+      if (context.mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text("Product deleted"),
+          ),
+        );
+      }
     } catch (e) {
-      // Handle error
+      if (context.mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text("Error"),
+          ),
+        );
+      }
     }
   }
 }

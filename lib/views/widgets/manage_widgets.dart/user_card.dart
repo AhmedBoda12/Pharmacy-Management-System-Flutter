@@ -1,10 +1,16 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 
 class UserCard extends StatelessWidget {
-  const UserCard(
-      {required this.userAuthorization, required this.userName, super.key});
-  final bool userAuthorization;
+  const UserCard({
+    super.key,
+    required this.isAdmin,
+    required this.userName,
+    required this.onPressed,
+  });
+  final bool isAdmin;
   final String userName;
+  final VoidCallback onPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -46,7 +52,7 @@ class UserCard extends StatelessWidget {
                             style: const TextStyle(fontSize: 20),
                           ),
                           Text(
-                            "Authorized : $userAuthorization",
+                            "Authorized : $isAdmin",
                             style: const TextStyle(fontSize: 20),
                           ),
                         ],
@@ -56,22 +62,16 @@ class UserCard extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                            backgroundColor: Colors.indigo),
+                      FilledButton(
                         onPressed: () {},
                         child: const Text(
                           "Edit",
-                          style: TextStyle(color: Colors.white),
                         ),
                       ),
-                      ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                            backgroundColor: Colors.indigo),
-                        onPressed: () {},
+                      FilledButton(
+                        onPressed: onPressed,
                         child: const Text(
                           "Delete",
-                          style: TextStyle(color: Colors.white),
                         ),
                       ),
                     ],
