@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'dart:developer';
 
 import 'package:faith_pharm/constants.dart';
 import 'package:faith_pharm/helper/api.dart';

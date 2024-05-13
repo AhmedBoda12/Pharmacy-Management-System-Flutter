@@ -8,7 +8,6 @@ import 'package:faith_pharm/views/pages/login_page.dart';
 import 'package:faith_pharm/views/pages/product_page.dart';
 import 'package:faith_pharm/views/pages/signup_page.dart';
 import 'package:flutter/material.dart';
-import 'package:faith_pharm/views/pages/edit_profile.dart';
 import 'package:faith_pharm/views/pages/orders.dart';
 
 void main() {

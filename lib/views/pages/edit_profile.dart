@@ -1,7 +1,6 @@
 import 'package:faith_pharm/models/user_model.dart';
 import 'package:faith_pharm/services/users_services.dart';
 import 'package:faith_pharm/views/home/main_page.dart';
-import 'package:faith_pharm/views/pages/profile_page.dart';
 import 'package:flutter/material.dart';
 
 class UpdateProfileScreen extends StatefulWidget {
