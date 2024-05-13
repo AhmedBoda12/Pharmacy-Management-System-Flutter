@@ -1,14 +1,12 @@
+import 'package:faith_pharm/models/category_model.dart';
 import 'package:flutter/material.dart';
 
 class CategoryCard extends StatelessWidget {
   const CategoryCard({
-    required this.categoryItemNum,
-    required this.categoryName,
     super.key,
+    required this.category,
   });
-  final String categoryName;
-  final int categoryItemNum;
-
+  final CategotyModel category;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -30,31 +28,27 @@ class CategoryCard extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(categoryName,
+                  Text(category.categoryname,
                       style: const TextStyle(
                           fontSize: 30, fontWeight: FontWeight.bold)),
-                  Text("number of items : $categoryItemNum",
-                      style: const TextStyle(fontSize: 15, color: Colors.grey)),
+                  Text(
+                    "Category ID: ${category.id!.substring(0, 10)}",
+                    style: const TextStyle(fontSize: 15, color: Colors.grey),
+                  ),
                 ],
               ),
               Column(
                 children: [
-                  ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.indigo),
+                  FilledButton(
                     onPressed: () {},
                     child: const Text(
                       " Edit ",
-                      style: TextStyle(color: Colors.white),
                     ),
                   ),
-                  ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.indigo),
+                  FilledButton(
                     onPressed: () {},
                     child: const Text(
                       "Delete",
-                      style: TextStyle(color: Colors.white),
                     ),
                   )
                 ],

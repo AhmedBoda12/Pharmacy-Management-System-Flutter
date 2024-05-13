@@ -1,3 +1,5 @@
+import 'package:faith_pharm/models/category_model.dart';
+import 'package:faith_pharm/services/category_services.dart';
 import 'package:faith_pharm/views/widgets/custom_search_bar.dart';
 import 'package:faith_pharm/views/widgets/manage_widgets.dart/category_card.dart';
 import 'package:faith_pharm/views/widgets/manage_widgets.dart/floating_action.dart';
@@ -11,59 +13,28 @@ class ManageCategoriesPage extends StatelessWidget {
     return Scaffold(
       extendBody: true,
       appBar: AppBar(
-        backgroundColor: Colors.indigo,
-        actions: const [
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: 12),
-            child: SizedBox(
-                width: 300,
-                child: CustomSearchBar(hint: "Which category do you search?")),
-          ),
-        ],
+        backgroundColor: Theme.of(context).colorScheme.primary,
+        foregroundColor: Theme.of(context).colorScheme.onPrimary,
+        title: const CustomSearchBar(hint: "Which category do you search?"),
       ),
       floatingActionButton: const FloatAction(),
-      body: const SingleChildScrollView(
-        child: Column(
-          children: [
-            CategoryCard(
-              categoryName: "inti boitic",
-              categoryItemNum: 10,
-            ),
-            CategoryCard(
-              categoryName: "inti boitic",
-              categoryItemNum: 10,
-            ),
-            CategoryCard(
-              categoryName: "inti boitic",
-              categoryItemNum: 10,
-            ),
-            CategoryCard(
-              categoryName: "inti boitic",
-              categoryItemNum: 10,
-            ),
-            CategoryCard(
-              categoryName: "inti boitic",
-              categoryItemNum: 10,
-            ),
-            CategoryCard(
-              categoryName: "inti boitic",
-              categoryItemNum: 10,
-            ),
-            CategoryCard(
-              categoryName: "inti boitic",
-              categoryItemNum: 10,
-            ),
-            CategoryCard(
-              categoryName: "inti boitic",
-              categoryItemNum: 10,
-            ),
-            CategoryCard(
-              categoryName: "inti boitic",
-              categoryItemNum: 10,
-            ),
-          ],
-        ),
-      ),
+      body: FutureBuilder(
+          future: CategoryServices().getAllCategories(),
+          builder: (context, snapshot) {
+            if (snapshot.hasData) {
+              List<CategotyModel> categories = snapshot.data!;
+              return ListView.builder(
+                itemCount: categories.length,
+                itemBuilder: (context, index) {
+                  return CategoryCard(category: categories[index]);
+                },
+              );
+            } else {
+              return const Center(
+                child: CircularProgressIndicator(),
+              );
+            }
+          }),
     );
   }
 }
